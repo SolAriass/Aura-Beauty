@@ -1,0 +1,14 @@
+<h2>Login</h2>
+
+<form (ngSubmit)="login()">
+  <label>Email:</label>
+  <input [(ngModel)]="email" name="email" required><br>
+
+  <label>Contraseña:</label>
+  <input [(ngModel)]="contrasenia" name="contrasenia" type="password" required><br>
+
+  <button type="submit">Ingresar</button>
+</form>
+
+<p>{{ mensaje }}</p>
+
