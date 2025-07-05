@@ -15,8 +15,11 @@
     </div>
 
     <div class="icons">
-      <i class="fas fa-shopping-cart"></i>
-      <img src="" class="profile-img" alt="Perfil"/>
+      <button class="profile-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ded0c2" viewBox="0 0 24 24">
+          <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.3 0-9.8 1.7-9.8 5v2.4h19.6v-2.4c0-3.3-6.5-5-9.8-5z"/>
+        </svg>
+      </button>
     </div>
 
 <button (click)="logout()" class="btn btn-danger">
@@ -28,19 +31,29 @@
 
   <app-carrousel class="carrousel"></app-carrousel>
 
-  <main class="main-content">
+  <div class="category-buttons">
+    <button class="category-btn perfumes" (click)="irAPerfumes()">
+      <span>Perfumes Árabes</span>
+    </button>
+
+    <button class="category-btn cosmetica">
+      <span>Cosmética</span>
+    </button>
+  </div>
+
+  <!-- <main class="main-content">
     <button class="filter-btn"><i class="fas fa-chevron-down"></i>Filtrar por</button>
 
     <section class="products-grid">
-      <!-- Repetí esta card para cada perfume -->
+       Repetí esta card para cada perfume
       <div class="product-card">
         <img src="" alt="Perfume 1"/>
       </div>
       <div class="product-card">
         <img src="" alt="Perfume 2"/>
       </div>
-      <!-- ...más productos -->
+      ...más productos
     </section>
-  </main>
+  </main> -->
 </body>
 </html>

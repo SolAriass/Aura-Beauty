@@ -10,6 +10,11 @@ import { Router} from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(private router: Router) {}
+
+  irAPerfumes() {
+    this.router.navigate(['/productos']);
+  }
 
   constructor(private authService: AuthService, private router: Router) {}
 
