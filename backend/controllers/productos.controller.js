@@ -1,5 +1,5 @@
-const productoService = require('../services/productos.service');
 const { PrismaClient } = require('../generated/prisma');
+const productoService = require('../services/productos.service');
 
 const prisma = new PrismaClient();
 

@@ -9,6 +9,9 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 
+// Usar imagenes
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
   res.send('¡Backend funcionando desde Angular!');
 });
