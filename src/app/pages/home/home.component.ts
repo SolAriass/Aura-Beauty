@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CarrouselComponent } from "./carrousel/carrousel.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,5 +9,10 @@ import { CarrouselComponent } from "./carrousel/carrousel.component";
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(private router: Router) {}
+
+  irAPerfumes() {
+    this.router.navigate(['/productos']);
+  }
 
 }
