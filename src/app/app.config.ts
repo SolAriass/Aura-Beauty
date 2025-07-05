@@ -7,6 +7,7 @@ import { routes } from './app.routes';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProductosComponent } from './pages/productos/productos.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 export const appConfig: ApplicationConfig = {
@@ -16,7 +17,8 @@ export const appConfig: ApplicationConfig = {
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'registro', component: RegistroComponent },
       { path: 'login', component: LoginComponent },
-       { path: 'productos', component: ProductosComponent }
+      { path: 'productos', component: ProductosComponent },
+      { path: 'home', component: HomeComponent}
     ])
   ]
 

@@ -7,5 +7,6 @@ router.post('/productos', obtenerProductos);
 router.post('/productos/crear', crearProducto);
 router.post('/registro', registerUser);
 router.post('/login', loginUser);
+router.post('/home', loginUser);
 
 module.exports = router;
