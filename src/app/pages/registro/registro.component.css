@@ -1,0 +1,72 @@
+.registro-container {
+  display: flex;
+  height: 100vh;
+  background-image: url('/assets/fondo-login.jpg'); /* Asegúrate de tener la imagen */
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+}
+
+.left {
+  position: absolute;
+  top: 25%;
+  left: 50px;
+}
+
+.logo {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 48px;
+  color: black;
+}
+
+.registro-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.registro-box h2 {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.registro-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 20px;
+  border: none;
+  background-color: #e0dcd7;
+}
+
+.registro-box button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #a28267;
+  border: none;
+  border-radius: 20px;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.registro-box p {
+  margin-top: 15px;
+}
+
+.registro-box a {
+  color: #a28267;
+  text-decoration: none;
+}
+
+.mensaje {
+  color: green;
+  font-weight: bold;
+}

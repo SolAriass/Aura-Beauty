@@ -1,14 +1,52 @@
-<h2>Login</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parisienne&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #DFCFC2;">
 
-<form (ngSubmit)="login()">
+<div class="container-fluid d-flex vh-100 justify-content-center align-items-center">
+  <div class="w-25 m-3">
+    <h1 style="font-family: Parisienne; font-size: 60px;">Aura Beauty</h1>
+  </div>
+
+<div class="w-50 p-5 rounded-3 d-flex justify-content-center flex-column align-items-center" style="background-color: #ffffffa6; font-family: Montserrat; ">
+  <h2 class="text-center" >Iniciar sesion</h2>
+
+<form (ngSubmit)="login()" class="d-flex flex-column w-50">
   <label>Email:</label>
-  <input [(ngModel)]="email" name="email" required><br>
+
+  <input [(ngModel)]="email" name="email" required placeholder="email" class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
 
   <label>Contraseña:</label>
-  <input [(ngModel)]="contrasenia" name="contrasenia" type="password" required><br>
 
-  <button type="submit">Ingresar</button>
+  <input [(ngModel)]="contrasenia" name="contrasenia" type="password" required placeholder="contraseña" class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
+
+  <div class="d-flex justify-content-center">
+     <button type="submit" class="btn mb-1 w-50 fw-bold rounded-4 mt-2" style="background-color: #A38972;">ACCEDER</button>
+  </div>
+
 </form>
+<p class="text-center mt-3">No tenes cuenta? Registrate</p>
 
 <p>{{ mensaje }}</p>
+</div>
+
+</div>
+
+
+
+
+
+</body>
+</html>
+
 
