@@ -1,0 +1,12 @@
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+async function obtenerTodos() {
+  return prisma.producto.findMany();
+}
+
+async function crearProducto(data) {
+  return prisma.producto.create({ data });
+}
+
+module.exports = { obtenerTodos, crearProducto };

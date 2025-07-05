@@ -1,7 +1,14 @@
-<h2>Lista de Productos</h2>
+<div class="container">
+  <h2>Productos</h2>
 
-<ul>
-  <li *ngFor="let producto of productos">
-    {{ producto.nombre }} - ${{ producto.precio }}
-  </li>
-</ul>
+  <form (ngSubmit)="crearProducto()" class="mb-3">
+    <input [(ngModel)]="nuevo.nombre" name="nombre" placeholder="Nombre" required />
+    <input [(ngModel)]="nuevo.precio" name="precio" type="number" placeholder="Precio" required />
+    <button type="submit">Agregar</button>
+  </form>
+
+  <div *ngFor="let producto of productos" class="card m-2 p-2">
+    <h4>{{ producto.nombre }}</h4>
+    <p>Precio: ${{ producto.precio }}</p>
+  </div>
+</div>
