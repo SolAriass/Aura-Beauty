@@ -18,29 +18,29 @@
     <h1 style="font-family: Parisienne; font-size: 60px;">Aura Beauty</h1>
   </div>
 
-<div class="w-50 p-5 rounded-3 d-flex justify-content-center flex-column align-items-center" style="background-color: #ffffffa6; font-family: Montserrat; ">
-  <h2 class="text-center" >Iniciar sesion</h2>
+  <div class="w-50 p-5 rounded-3 d-flex justify-content-center flex-column align-items-center" style="background-color: #ffffffa6; font-family: Montserrat;">
+    <h2 class="text-center">Iniciar sesion</h2>
 
-<form (ngSubmit)="login()" class="d-flex flex-column w-50">
-  <label>Email:</label>
+    <form [formGroup]="form" (ngSubmit)="login()" class="d-flex flex-column w-50">
+      <label>Email:</label>
 
-  <input [(ngModel)]="email" name="email" required placeholder="email" class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
+      <input formControlName="email" required placeholder="email" class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
 
-  <label>Contraseña:</label>
+      <label>Contraseña:</label>
 
-  <input [(ngModel)]="contrasenia" name="contrasenia" type="password" required placeholder="contraseña" class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
+      <input formControlName="contrasenia" type="password" required placeholder="contraseña" class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
 
-  <div class="d-flex justify-content-center">
-     <button type="submit" class="btn mb-1 w-50 fw-bold rounded-4 mt-2" style="background-color: #A38972;">ACCEDER</button>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn mb-1 w-50 fw-bold rounded-4 mt-2" style="background-color: #A38972;">ACCEDER</button>
+      </div>
+    </form>
+
+
+    <p class="text-center mt-3">¿No tenes cuenta? <a routerLink="/registro" class="fw-bold" style="color: #A38972;">Registrate</a></p>
+    <p>{{ mensaje }}</p>
   </div>
-
-</form>
-<p class="text-center mt-3">No tenes cuenta? Registrate</p>
-
-<p>{{ mensaje }}</p>
 </div>
 
-</div>
 
 
 

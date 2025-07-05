@@ -1,32 +1,41 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-registro',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
- nombre = '';
-  email = '';
-  contrasenia = '';
-  apellido = '';
-  direccion = '';
+
+  form;
+
   mensaje = '';
 
-  constructor(private http: HttpClient) {}
-
-  registrar() {
-    const datos = { email: this.email, nombre: this.nombre, contrasenia: this.contrasenia, apellido: this.apellido, direccion: this.direccion };
-
-    this.http.post('http://localhost:3000/api/users/registro', datos).subscribe({
-      next: res => this.mensaje = '¡Registrado con éxito!',
-      error: err => this.mensaje = err.error?.message || 'Error al registrar'
+  constructor(private fb: FormBuilder, private authService: AuthService) {
+    this.form = this.fb.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      contrasenia: ['', Validators.required],
+      direccion: ['']
     });
   }
 
+  registrar() {
+    if (this.form.invalid) {
+      this.mensaje = 'Faltan completar campos';
+      return;
+    }
 
+    this.authService.registrar(this.form.value).subscribe({
+      next: () => this.mensaje = '¡Registrado con éxito!',
+      error: err => this.mensaje = err.error?.message || 'Error al registrar'
+    });
+  }
 }
