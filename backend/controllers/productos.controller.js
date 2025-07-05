@@ -8,17 +8,9 @@ const obtenerProductos = async (req, res) => {
     const productos = await productoService.listarProductos();
     res.json(productos);
   } catch (error) {
-    res.status(500).json({ message: 'Error al obtener productos' });
+    res.status(500).json({ message: 'Error al obtener productos', error });
   }
 };
 
-const crearProducto = async (req, res) => {
-  try {
-    const nuevo = await productoService.registrarProducto(req.body);
-    res.status(201).json(nuevo);
-  } catch (error) {
-    res.status(500).json({ message: 'Error al crear producto' });
-  }
-};
 
-module.exports = { obtenerProductos, crearProducto };
+module.exports = { obtenerProductos};

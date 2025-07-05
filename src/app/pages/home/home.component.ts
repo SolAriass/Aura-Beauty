@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CarrouselComponent } from "./carrousel/carrousel.component";
-import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,5 +15,13 @@ export class HomeComponent {
   irAPerfumes() {
     this.router.navigate(['/productos']);
   }
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+
 
 }
