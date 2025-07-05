@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Producto {
-  id?: number;
-  nombre: string;
+  id: number;
+  nombre: String;
+  descripcion: String;
+  idGenero: number;
   precio: number;
 }
 
@@ -20,7 +22,4 @@ export class ProductosService {
     return this.http.get<Producto[]>(this.apiUrl);
   }
 
-  crearProducto(producto: Producto): Observable<Producto> {
-    return this.http.post<Producto>(this.apiUrl, producto);
-  }
 }

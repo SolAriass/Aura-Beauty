@@ -12,26 +12,16 @@ import { FormsModule } from '@angular/forms';
 export class ProductosComponent  implements OnInit{
 
     productos: Producto[] = [];
-  nuevo: Producto = { nombre: '', precio: 0 };
 
   constructor(private productosService: ProductosService) {}
 
   ngOnInit(): void {
-    this.cargarProductos();
-  }
-
-  cargarProductos(): void {
-    this.productosService.obtenerProductos().subscribe(data => {
-      this.productos = data;
+    this.productosService.obtenerProductos().subscribe({
+      next: (data) => this.productos = data,
+      error: (err) => console.error('Error:', err)
     });
   }
 
-  crearProducto(): void {
-    this.productosService.crearProducto(this.nuevo).subscribe(() => {
-      this.nuevo = { nombre: '', precio: 0 };
-      this.cargarProductos();
-    });
-  }
 }
 
 
