@@ -1,34 +1,41 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-   email = '';
-  contrasenia = '';
+  form: FormGroup;
   mensaje = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      contrasenia: ['', Validators.required]
+    });
+  }
 
   login() {
-    const datos = { email: this.email, contrasenia: this.contrasenia };
+    if (this.form.invalid) {
+      this.mensaje = 'Faltan completar campos';
+      return;
+    }
 
-    this.http.post('http://localhost:3000/api/users/login', datos).subscribe({
-      next: res => {
+    this.authService.login(this.form.value).subscribe({
+      next: () => {
         this.mensaje = 'Login exitoso';
         this.router.navigate(['/productos']);
       },
       error: err => {
-        this.mensaje = err.error?.message || 'Error de login';
+        this.mensaje = err.error?.message || 'Error al iniciar sesión';
       }
     });
   }
-
 }
