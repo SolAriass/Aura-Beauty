@@ -1,25 +1,51 @@
-<div class="registro-container">
-  <!-- Lado izquierdo con logo -->
-  <div class="left">
-    <h1 class="logo">Aura Beauty</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parisienne&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #DFCFC2;">
+
+
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+
+  <div class="m-3 w-25">
+    <h1 style="font-family: Parisienne; font-size: 60px;">Aura Beauty</h1>
   </div>
 
-  <!-- Caja de registro -->
-  <div class="registro-box">
+
+  <div class="container d-flex flex-column w-50 m-0 p-5 rounded-3 justify-content-center align-items-center" style="background-color: #ffffffa6; font-family: Montserrat;">
     <h2>Registrarse</h2>
 
-    <form (ngSubmit)="registrar()">
-      <input [(ngModel)]="email" name="email" type="email" placeholder="Email" required>
-      <input [(ngModel)]="nombre" name="nombre" type="text" placeholder="Nombre" required>
-      <input [(ngModel)]="apellido" name="apellido" type="text" placeholder="Apellido" required>
-      <input [(ngModel)]="direccion" name="direccion" type="text" placeholder="Dirección" required>
-      <input [(ngModel)]="contrasenia" name="contrasenia" type="password" placeholder="Contraseña" required>
+    <form [formGroup]="form" (ngSubmit)="registrar()" class="d-flex flex-column w-50">
+         <label>Email:</label>
+      <input formControlName="email" type="email" placeholder="Email" required class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
+         <label>Nombre:</label>
+      <input formControlName="nombre" type="text" placeholder="Nombre" required class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
+         <label>Apellido:</label>
+      <input formControlName="apellido" type="text" placeholder="Apellido" required class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
+         <label>Direccion:</label>
+      <input formControlName="direccion" type="text" placeholder="Dirección" required class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
+         <label>Contraseña:</label>
+      <input formControlName="contrasenia" type="password" placeholder="Contraseña" required class="rounded-3 p-2 mb-1" style="background-color: #DBCFC1; border: none;">
 
-      <button type="submit">REGISTRARSE</button>
+      <div class="d-flex justify-content-center align-items-center">
+      <button type="submit" class="btn mb-1 w-50  fw-bold rounded-4 mt-2" style="background-color: #A38972;">REGISTRARSE</button>
+</div>
     </form>
 
-    <p class="mensaje">{{ mensaje }}</p>
+    <p class="text-center mt-3">¿Ya tienes cuenta? <a routerLink="/login" class="fw-bold" style="color: #A38972;">Inicia sesión</a></p>
 
-    <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+    <p class="mensaje">{{ mensaje }}</p>
   </div>
 </div>
+
+</body>
+</html>

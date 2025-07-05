@@ -1,0 +1,21 @@
+<div class="carousel-container">
+  <button class="carousel-btn prev" (click)="prevSlide()">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#333" viewBox="0 0 24 24">
+    <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+  </svg>
+  </button>
+  <div class="carousel-track-wrapper">
+    <div class="carousel-track" [style.transform]="getTransform()">
+      <img src="images/banners/Banner-Lattafa-Eternal-Oud.png" alt="Banner 1">
+      <img src="images/banners/Banner-Amber-Oud.png" alt="Banner 2">
+      <img src="images/banners/Banner-Lattafa-Emaan.png" alt="Banner 3">
+      <img src="images/banners/Banner-Lattafa-Emeer.png" alt="Banner 4">
+      <img src="images/banners/Banner-Lattafa-Atheeri.png" alt="Banner 5">
+    </div>
+  </div>
+  <button class="carousel-btn next" (click)="nextSlide()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#333" viewBox="0 0 24 24">
+      <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+    </svg>
+  </button>
+</div>
