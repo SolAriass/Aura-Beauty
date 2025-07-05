@@ -29,9 +29,12 @@ export class LoginComponent {
     }
 
     this.authService.login(this.form.value).subscribe({
-      next: () => {
+      next: (res) => {
+        localStorage.setItem('usuario', JSON.stringify(res.user));
         this.mensaje = 'Login exitoso';
-        this.router.navigate(['/productos']);
+        this.router.navigate(['/home']);
+
+
       },
       error: err => {
         this.mensaje = err.error?.message || 'Error al iniciar sesión';
