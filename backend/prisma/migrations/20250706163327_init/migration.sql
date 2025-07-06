@@ -1,15 +1,28 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "User" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "nombre" TEXT NOT NULL,
+    "contrasenia" TEXT NOT NULL,
+    "apellido" TEXT NOT NULL,
+    "direccion" TEXT NOT NULL,
 
-  - You are about to drop the column `clasificacion` on the `Product` table. All the data in the column will be lost.
-  - Added the required column `idCategoria` to the `Product` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `idGenero` to the `Product` table without a default value. This is not possible if the table is not empty.
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
 
-*/
--- AlterTable
-ALTER TABLE "Product" DROP COLUMN "clasificacion",
-ADD COLUMN     "idCategoria" INTEGER NOT NULL,
-ADD COLUMN     "idGenero" INTEGER NOT NULL;
+-- CreateTable
+CREATE TABLE "Product" (
+    "id" SERIAL NOT NULL,
+    "marca" TEXT NOT NULL,
+    "nombre" TEXT NOT NULL,
+    "descripcion" TEXT NOT NULL,
+    "idGenero" INTEGER NOT NULL,
+    "precio" DOUBLE PRECISION NOT NULL,
+    "idCategoria" INTEGER NOT NULL,
+    "url" TEXT NOT NULL,
+
+    CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "Categoria" (
@@ -26,6 +39,9 @@ CREATE TABLE "Genero" (
 
     CONSTRAINT "Genero_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Genero_nombre_key" ON "Genero"("nombre");
