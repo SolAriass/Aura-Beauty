@@ -5,4 +5,4 @@ async function obtenerTodos() {
   return prisma.product.findMany();
 }
 
-module.exports = { obtenerTodos};
+module.exports = { obtenerTodos };
