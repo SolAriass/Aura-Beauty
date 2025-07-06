@@ -1,7 +1,21 @@
-import { CanActivateFn } from '@angular/router';
+import { inject, Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, GuardResult, MaybeAsync, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable, of } from 'rxjs';
 
-export const authGuard: CanActivateFn = () => {
+const isAuthenticated = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<boolean | UrlTree>  =>{
+
+
+  const router = inject(Router);
+
   const usuario = localStorage.getItem('usuario');
-  return !!usuario; // true si hay usuario → puede entrar
-};
+
+  return usuario ? of(true) : of(router.createUrlTree(['/login']))
+}
+
+
+
+export const canActivateAuth:CanActivateFn = isAuthenticated;
 
