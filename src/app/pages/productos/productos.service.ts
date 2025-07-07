@@ -8,6 +8,7 @@ export interface Producto {
   descripcion: String;
   idGenero: number;
   precio: number;
+  url: String;
 }
 
 @Injectable({

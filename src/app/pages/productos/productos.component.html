@@ -1,8 +1,48 @@
-<div class="container">
-  <h2>Lista de Productos</h2>
-  <div *ngFor="let p of productos" class="card p-2 m-2">
-    <p>{{ p.descripcion }}</p>
-    <p>Clasificación: {{ p.idGenero }}</p>
-    <p>Precio: ${{ p.precio }}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parisienne&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #DFCFC2; font-family: Montserrat;" >
+  <div class="container-fluid">
+    <h2 class="text-center fw-bold p-3">Lista de Productos</h2>
+
+
+
+
+    <div class="card-body d-flex flex-wrap text-center m-0 p-0 rounded-3 gap-3 justify-content-center">
+   <div *ngFor="let p of productos" class="card rounded-3 d-flex flex-column"
+     style="background-color: #A38972; width: 18rem; border: 1px solid #836d59;">
+
+     <div class="d-flex justify-content-center align-items-center">
+       <img [src]="'images/productos/' + p.url" alt="{{ p.nombre }}" class="card-img-top" style="width: 18rem; height: 18rem;">
+     </div>
+
+      <h5 class="card-title fw-bold p-4" style="background-color: #836d59; height: auto;">{{ p.nombre }}</h5>
+
+      <div class="d-flex justify-content-center align-items-center m-1 p-0 flex-column">
+        <p class="card-text">{{ p.descripcion }}</p>
+        <p class="card-text">Clasificación: {{ p.idGenero }}</p>
+      </div>
+
+      <p class="card-footer mt-auto m-0 ">Precio: ${{ p.precio }}</p>
+
+    </div>
   </div>
+
+
 </div>
+
+</body>
+</html>
+
+
+
