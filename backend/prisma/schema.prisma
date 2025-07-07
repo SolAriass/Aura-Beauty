@@ -48,3 +48,4 @@ model Genero {
   nombre    String    @unique
   productos Product[] // Relación uno a muchos
 }
+

@@ -5,7 +5,7 @@ async function listarProductos() {
 }
 
 async function buscarProductosPorNombre(nombre) {
-  return await productoRepo.buscarPorNombre(nombre);
+  return await productoRepo.buscarProductosPorNombre(nombre);
 }
 
 module.exports = { listarProductos, buscarProductosPorNombre };

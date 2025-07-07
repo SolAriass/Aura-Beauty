@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 export interface Producto {
   id: number;
   nombre: string;
-  imagenUrl: string;
+  url: string;
 }
 
 @Injectable({
@@ -16,7 +16,7 @@ export class BuscadorService {
 
   constructor(private http: HttpClient) {}
 
-  buscarPorNombre(query: string): Observable<Producto[]> {
-    return this.http.get<Producto[]>(`${this.apiUrl}/buscar?q=${query}`);
+  buscarProductos(nombre: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.apiUrl}/buscar?q=${nombre}`);
   }
 }

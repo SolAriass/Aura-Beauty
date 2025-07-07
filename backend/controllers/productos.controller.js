@@ -3,14 +3,17 @@ const productoService = require('../services/productos.service');
 
 const prisma = new PrismaClient();
 
-const obtenerProductos = async (req, res) => {
+async function sugerenciasProductos(req, res) {
+  const { q } = req.query;
+  if (!q || q.trim() === '') return res.json([]); // sin resultados si está vacío
+
   try {
-    const productos = await productoService.listarProductos();
+    const productos = await productoService.buscarProductosPorNombre(q.trim());
     res.json(productos);
   } catch (error) {
-    res.status(500).json({ message: 'Error al obtener productos', error });
+    console.error('Error en sugerencias:', error);
+    res.status(500).json({ message: 'Error buscando productos' });
   }
-};
+}
 
-
-module.exports = { obtenerProductos};
+module.exports = { sugerenciasProductos };

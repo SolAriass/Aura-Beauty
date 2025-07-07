@@ -1,25 +1,23 @@
 const { PrismaClient } = require('../generated/prisma');
 const prisma = new PrismaClient();
 
-async function obtenerTodos() {
-  return prisma.product.findMany();
-}
-
-async function buscarPorNombre(nombre) {
-  return prisma.producto.findMany({
+async function buscarProductosPorNombre(nombre) {
+  return await prisma.product.findMany({
     where: {
-      nombre: {
+      name: {
         contains: nombre,
-        mode: 'insensitive'
-      }
+        mode: 'insensitive', // no distingue mayúsculas
+      },
     },
     take: 5,
     select: {
       id: true,
-      nombre: true,
-      url: true
-    }
+      name: true,
+      url: true, // imagen
+    },
   });
 }
 
-module.exports = { obtenerTodos, buscarPorNombre };
+module.exports = {
+  buscarProductosPorNombre,
+};
