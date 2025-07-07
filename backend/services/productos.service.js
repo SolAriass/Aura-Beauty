@@ -4,4 +4,8 @@ async function listarProductos() {
   return await productoRepo.obtenerTodos();
 }
 
-module.exports = { listarProductos };
+async function buscarProductosPorNombre(nombre) {
+  return await productoRepo.buscarPorNombre(nombre);
+}
+
+module.exports = { listarProductos, buscarProductosPorNombre };

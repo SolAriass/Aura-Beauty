@@ -9,12 +9,8 @@
   <header class="main-header">
     <img src="images/logo-aura-beauty.png" class="logo" alt="Logo AB"/>
 
-   <!-- BUSCADOR -->
- <input
-  type="text"
-  placeholder="Buscar por catálogo"
-  (input)="filtrarProductos($event)"
-/>
+    <!-- BUSCADOR -->
+    <app-buscador></app-buscador>
 
 
     <div class="icons">
@@ -25,9 +21,9 @@
       </button>
     </div>
 
-<button (click)="logout()" class="btn btn-danger">
-  Cerrar sesión
-</button>
+    <button (click)="logout()" class="btn btn-danger">
+      Cerrar sesión
+    </button>
 
 
   </header>

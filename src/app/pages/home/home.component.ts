@@ -4,11 +4,12 @@ import { CarrouselComponent } from "./carrousel/carrousel.component";
 import { AuthService } from '../../services/auth.service';
 import { Router} from '@angular/router';
 import { ProductosService, Producto } from '../productos/productos.service';
+import { BuscadorComponent } from './buscador/buscador.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarrouselComponent, CommonModule],
+  imports: [CarrouselComponent, BuscadorComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -31,6 +32,7 @@ ngOnInit(): void {
     error: (err) => console.error(err)
   });
 }
+
 filtrarProductos(event: Event): void {
   const inputElement = event.target as HTMLInputElement;
   const valor = inputElement?.value?.trim().toLowerCase() || '';

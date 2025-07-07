@@ -1,0 +1,26 @@
+<div class="buscador-container">
+  <input
+    #busqueda
+    type="text"
+    (input)="onInputChange(busqueda.value)"
+    class="form-control"
+  />
+
+  <ul class="buscador-resultados list-group mt-2" *ngIf="resultados$ | async as resultados">
+    <li
+      *ngFor="let producto of resultados"
+      class="list-group-item d-flex align-items-center resultado-item"
+    >
+      <img
+        [src]="'/images/productos' + producto.imagenUrl"
+        alt="{{ producto.nombre }}"
+        class="imagen-miniatura me-2"
+      />
+      <span>{{ producto.nombre }}</span>
+    </li>
+
+    <li *ngIf="resultados.length === 0" class="list-group-item text-muted">
+      No se encontraron resultados
+    </li>
+  </ul>
+</div>
