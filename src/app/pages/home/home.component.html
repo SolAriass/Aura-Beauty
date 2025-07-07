@@ -9,10 +9,13 @@
   <header class="main-header">
     <img src="images/logo-aura-beauty.png" class="logo" alt="Logo AB"/>
 
-    <div class="search-box">
-      <i class="fas fa-search"></i>
-      <input type="text" placeholder="Buscar por catalogo"/>
-    </div>
+   <!-- BUSCADOR -->
+ <input
+  type="text"
+  placeholder="Buscar por catálogo"
+  (input)="filtrarProductos($event)"
+/>
+
 
     <div class="icons">
       <button class="profile-btn">
@@ -41,6 +44,40 @@
     </button>
   </div>
 
+<div id="carouselMasVendidos" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div
+      class="carousel-item"
+      *ngFor="let producto of masVendidos; let i = index"
+      [class.active]="i === 0"
+    >
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{ producto.nombre }}</h5>
+        <p>{{ producto.descripcion }}</p>
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselMasVendidos"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselMasVendidos"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
   <!-- <main class="main-content">
     <button class="filter-btn"><i class="fas fa-chevron-down"></i>Filtrar por</button>
 
