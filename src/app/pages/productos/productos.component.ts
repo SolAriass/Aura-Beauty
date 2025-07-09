@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductosService, Producto } from './productos.service';
 import { FormsModule } from '@angular/forms';
+import { CarritoService } from '../../services/carrito.service';
+import { CarritoComponent } from "../carrito/carrito.component";
 
 @Component({
   selector: 'app-productos',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CarritoComponent],
   templateUrl: './productos.component.html',
   styleUrl: './productos.component.css'
 })
@@ -13,7 +15,9 @@ export class ProductosComponent  implements OnInit{
 
     productos: Producto[] = [];
 
-  constructor(private productosService: ProductosService) {}
+  constructor(private productosService: ProductosService,
+    private carritoService: CarritoService
+  ) {}
 
   ngOnInit(): void {
     this.productosService.obtenerProductos().subscribe({
@@ -21,6 +25,11 @@ export class ProductosComponent  implements OnInit{
       error: (err) => console.error('Error:', err)
     });
   }
+
+  agregarAlCarrito(producto: Producto) {
+  this.carritoService.agregarProducto(producto);
+}
+
 
 }
 

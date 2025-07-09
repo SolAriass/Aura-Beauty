@@ -15,36 +15,60 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  nombre     String
+  id          Int       @id @default(autoincrement())
+  email       String    @unique
+  nombre      String
   contrasenia String
-  apellido String
-  direccion String
+  apellido    String
+  direccion   String
+
+  ventas      Venta[]   // Relación uno a muchos
 }
 
 model Product {
-  id       Int     @id @default(autoincrement())
-  marca String
-  nombre String
+  id          Int           @id @default(autoincrement())
+  marca       String
+  nombre      String
   descripcion String
-  idGenero Int
-  precio Float
-  idCategoria   Int
-  url String
+  idGenero    Int
+  precio      Float
+  idCategoria Int
+  url         String
 
-  categoria     Categoria @relation(fields: [idCategoria], references: [id])
-  genero        Genero    @relation(fields: [idGenero], references: [id])
+  categoria   Categoria     @relation(fields: [idCategoria], references: [id])
+  genero      Genero        @relation(fields: [idGenero], references: [id])
+  detalles    DetalleVenta[] // Relación uno a muchos con detalle de ventas
 }
 
 model Categoria {
-  id       Int       @id @default(autoincrement())
-  nombre   String
-  productos Product[] // Relación uno a muchos (una categoría tiene muchos productos)
+  id        Int       @id @default(autoincrement())
+  nombre    String
+  productos Product[]
 }
 
 model Genero {
   id        Int       @id @default(autoincrement())
   nombre    String    @unique
-  productos Product[] // Relación uno a muchos
+  productos Product[]
 }
+
+model Venta {
+  id         Int             @id @default(autoincrement())
+  fecha      DateTime        @default(now())
+  total      Float
+  usuarioId  Int
+  usuario    User            @relation(fields: [usuarioId], references: [id])
+  detalles   DetalleVenta[]  // Una venta tiene varios detalles
+}
+
+model DetalleVenta {
+  id         Int       @id @default(autoincrement())
+  ventaId    Int
+  productoId Int
+  cantidad   Int
+  subtotal   Float
+
+  venta      Venta     @relation(fields: [ventaId], references: [id])
+  producto   Product   @relation(fields: [productoId], references: [id])
+}
+
