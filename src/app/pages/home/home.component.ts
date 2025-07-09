@@ -6,11 +6,13 @@ import { Router} from '@angular/router';
 import { ProductosService, Producto } from '../productos/productos.service';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { FormsModule } from '@angular/forms';
+import { CarritoComponent } from "../carrito/carrito.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarrouselComponent, BuscadorComponent, CommonModule, FormsModule],
+  imports: [CarrouselComponent, BuscadorComponent, CommonModule, FormsModule, CarritoComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -49,7 +51,7 @@ filtrarProductos(event: Event): void {
 }
 
 
- irAPerfumes() {
+ irAProductos() {
     this.router.navigate(['/productos']);
   }
 

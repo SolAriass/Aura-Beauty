@@ -5,6 +5,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { canActivateAuth } from './guards/auth.guard';
 import { VistaProductoComponent } from './pages/vista-producto/vista-producto.component';
+import { MisPedidosComponent } from './pages/mis-pedidos/mis-pedidos.component';
 
 
 
@@ -12,8 +13,9 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'productos', component: ProductosComponent },
+  { path: 'productos', component: ProductosComponent, canActivate: [canActivateAuth] },
   { path: 'home', component: HomeComponent, canActivate: [canActivateAuth] },
-  { path: 'vista-producto/:id', component: VistaProductoComponent }
+  { path: 'vista-producto/:id', component: VistaProductoComponent, canActivate: [canActivateAuth] },
+  {path: 'mis-pedidos', component: MisPedidosComponent, canActivate: [canActivateAuth]}
 
 ];
