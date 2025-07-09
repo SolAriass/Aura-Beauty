@@ -52,9 +52,6 @@ filtrarProductos(event: Event): void {
     this.router.navigate(['/productos']);
   }
 
-    irACosmeticos() {
-    this.router.navigate(['/cosmeticos']);
-  }
 
   logout() {
     this.authService.logout();
