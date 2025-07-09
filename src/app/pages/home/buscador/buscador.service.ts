@@ -5,9 +5,13 @@ import { Observable } from 'rxjs';
 export interface Producto {
   id: number;
   nombre: string;
-  imagenUrl: string;
+  marca: string;
+  descripcion: string;
+  url: string;
+  idGenero: number;
+  idCategoria: number;
+  precio: number;
 }
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +20,7 @@ export class BuscadorService {
 
   constructor(private http: HttpClient) {}
 
-  buscarPorNombre(query: string): Observable<Producto[]> {
-    return this.http.get<Producto[]>(`${this.apiUrl}/buscar?q=${query}`);
+  obtenerProductos(): Observable<Producto[]> {
+      return this.http.get<Producto[]>(this.apiUrl);
   }
 }

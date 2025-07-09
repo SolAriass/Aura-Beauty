@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const productosController = require('../controllers/productos.controller');
+const { obtenerProductos } = require('../controllers/productos.controller');
 
 // Ruta GET /api/productos
-router.get('/', productosController.obtenerProductos);
-router.get('/buscar', productosController.buscarProductos);
+router.get('/productos', obtenerProductos);
 
 module.exports = router;

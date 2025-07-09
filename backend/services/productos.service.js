@@ -4,8 +4,9 @@ async function listarProductos() {
   return await productoRepo.obtenerTodos();
 }
 
-async function buscarProductosPorNombre(nombre) {
-  return await productoRepo.buscarPorNombre(nombre);
-}
+const getSugerencias = async (query) => {
+  if (!query || query.trim() === '') return [];
+  return await productoRepo.getSugerencias(query);
+};
 
-module.exports = { listarProductos, buscarProductosPorNombre };
+module.exports = { listarProductos, getSugerencias };

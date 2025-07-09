@@ -10,7 +10,6 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/productos', productosRoutes);
 
-
 app.get('/', (req, res) => {
   res.send('¡Backend funcionando desde Angular!');
 });

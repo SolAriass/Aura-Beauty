@@ -1,26 +1,20 @@
-<div class="buscador-container">
+<div class="search-container">
   <input
-    #busqueda
     type="text"
-    (input)="onInputChange(busqueda.value)"
-    class="form-control"
+    class="search-input"
+    placeholder="Buscar perfume..."
+    [(ngModel)]="searchQuery"
+    (input)="onSearchChange()"
   />
-
-  <ul class="buscador-resultados list-group mt-2" *ngIf="resultados$ | async as resultados">
-    <li
-      *ngFor="let producto of resultados"
-      class="list-group-item d-flex align-items-center resultado-item"
+  <div class="suggestions" *ngIf="filteredResults.length > 0">
+    <div
+      class="suggestion-item"
+      *ngFor="let item of filteredResults"
+      (click)="selectProduct(item)"
     >
-      <img
-        [src]="'/images/productos' + producto.imagenUrl"
-        alt="{{ producto.nombre }}"
-        class="imagen-miniatura me-2"
-      />
-      <span>{{ producto.nombre }}</span>
-    </li>
-
-    <li *ngIf="resultados.length === 0" class="list-group-item text-muted">
-      No se encontraron resultados
-    </li>
-  </ul>
+      <img [src]="'/images/productos/' + item.url" [alt]="item.nombre" />
+      <span>{{ item.nombre }}</span>
+      <span>{{ item.precio | currency }}</span>
+    </div>
+  </div>
 </div>

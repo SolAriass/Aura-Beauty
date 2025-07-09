@@ -1,24 +1,40 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-carrousel',
-  imports: [],
+  imports: [ CommonModule],
   templateUrl: './carrousel.component.html',
   styleUrl: './carrousel.component.css'
 })
-export class CarrouselComponent {
+export class CarrouselComponent implements OnInit, OnDestroy{
   banners: string[] = [
-    'assets/banners/banner1.jpg',
-    'assets/banners/banner2.jpg',
-    'assets/banners/banner3.jpg',
-    'assets/banners/banner4.jpg',
-    'assets/banners/banner5.jpg'
+    'images/banners/Banner-Lattafa-Eternal-Oud.png',
+    'images/banners/Banner-Amber-Oud.png',
+    'images/banners/Banner-Lattafa-Emaan.png',
+    'images/banners/Banner-Lattafa-Emeer.png',
+    'images/banners/Banner-Lattafa-Atheeri.png'
   ];
 
-  currentIndex = 0;
+  currentIndex: number = 0;
+  autoSlideInterval: any;
 
-  getTransform(): string {
-    return `translateX(-${this.currentIndex * 100}%)`;
+  ngOnInit(): void {
+    this.startAutoSlide();
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.autoSlideInterval);
+  }
+
+  startAutoSlide(): void {
+    this.autoSlideInterval = setInterval(() => {
+      this.nextSlide();
+    }, 3500);
+  }
+
+  pauseAutoSlide(): void {
+    clearInterval(this.autoSlideInterval);
   }
 
   nextSlide(): void {
@@ -29,4 +45,11 @@ export class CarrouselComponent {
     this.currentIndex = (this.currentIndex - 1 + this.banners.length) % this.banners.length;
   }
 
+  goToSlide(index: number): void {
+    this.currentIndex = index;
+  }
+
+  getTransform(): string {
+    return `translateX(-${this.currentIndex * 100}%)`;
+  }
 }

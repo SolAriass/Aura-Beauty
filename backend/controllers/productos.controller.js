@@ -13,4 +13,4 @@ const obtenerProductos = async (req, res) => {
 };
 
 
-module.exports = { obtenerProductos};
+module.exports = { obtenerProductos };
