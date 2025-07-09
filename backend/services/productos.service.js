@@ -1,7 +1,7 @@
 const productoRepo = require('../repositories/productos.repository');
 
-async function listarProductos() {
-  return await productoRepo.obtenerTodos();
+async function listarProductos(filtros = {}) {
+  return await productoRepo.obtenerTodos(filtros);
 }
 
 const getSugerencias = async (query) => {
@@ -16,6 +16,12 @@ async function buscarProductosPorNombre(nombre) {
 async function obtenerPorId(id) {
   return await productoRepo.obtenerPorId(id);
 }
-
-
-module.exports = { listarProductos, buscarProductosPorNombre, obtenerPorId };
+async function listarCategorias() {
+  return await productoRepo.obtenerCategoriasUnicas();
+}
+module.exports = {
+  listarProductos,
+  buscarProductosPorNombre,
+  obtenerPorId,
+  listarCategorias
+};
