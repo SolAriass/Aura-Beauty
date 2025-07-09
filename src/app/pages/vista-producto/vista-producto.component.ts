@@ -37,6 +37,6 @@ export class VistaProductoComponent implements OnInit {
 
   agregarAlCarrito(producto: Producto): void {
 this.carritoService.agregarProducto(producto);
-
+alert('Producto añadido al carrito!');
   }
 }

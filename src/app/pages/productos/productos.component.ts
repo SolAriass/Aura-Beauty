@@ -25,7 +25,14 @@ export class ProductosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cargarProductos();
+    const filtrosGuardados = localStorage.getItem('filtros');
+    const filtros = filtrosGuardados ? JSON.parse(filtrosGuardados) : {};
+    this.cargarProductos(filtros);
+
+    this.categoriaSeleccionada = filtros.categoria || '';
+    this.cargarProductos(filtros);
+
+
 
     this.productosService.obtenerCategorias().subscribe({
       next: (data) => this.categorias = data,
@@ -34,6 +41,8 @@ export class ProductosComponent implements OnInit {
   }
 
   cargarProductos(filtros: { nombre?: string; precio?: string; categoria?: string } = {}) {
+    localStorage.setItem('filtros', JSON.stringify(filtros));
+
     const filtrosLimpiados: any = {};
 
     if (filtros.nombre) filtrosLimpiados.nombre = filtros.nombre;
