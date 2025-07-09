@@ -2,10 +2,11 @@ import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { BuscadorService, Producto } from './buscador.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterEvent, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-buscador',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './buscador.component.html',
   styleUrl: './buscador.component.css'
 })
@@ -32,11 +33,6 @@ export class BuscadorComponent {
     this.filteredResults = this.allProducts.filter(p =>
       p.nombre.toLowerCase().includes(query)
     );
-  }
-
-  selectProduct(product: Producto): void {
-    this.searchQuery = product.nombre;
-    this.filteredResults = [];
   }
 
   @HostListener('document:click', ['$event'])

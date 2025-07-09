@@ -10,7 +10,7 @@
     <div
       class="suggestion-item"
       *ngFor="let item of filteredResults"
-      (click)="selectProduct(item)"
+      [routerLink]="['/vista-producto', item.id]"
     >
       <img [src]="'/images/productos/' + item.url" [alt]="item.nombre" />
       <span>{{ item.nombre }}</span>
