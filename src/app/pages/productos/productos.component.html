@@ -18,6 +18,10 @@
 <body style="background-color: #DFCFC2; font-family: Montserrat;" >
   <div class="container-fluid m-0 p-0">
     <div class="d-flex justify-content-center align-items-center m-0 p-3" style="background-color: #836d59;">
+      <a routerLink="/home">
+        <img src="images/logo-aura-beauty.png" class="logo" alt="Logo AB" />
+      </a>
+
       <h2 class="text-center fw-bold w-100" style="font-family: Exo;">Lista de Productos</h2>
       <button class="btn position-relative me-3" style="border: 1px solid #DFCFC2; color: #DFCFC2;" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas">Carrito</button>
     </div>
@@ -40,7 +44,6 @@
     </a>
 
       <h5 class="card-title fw-bold p-4" style="background-color: #836d59; height: auto; font-family: Exo;">{{ p.nombre }}</h5>
-
       <p class="card-footer mt-auto m-0 "><strong>Precio: ${{ p.precio }}</strong></p>
       <button class="btn btn-dark" (click)="agregarAlCarrito(p)">Agregar al carrito</button>
 
@@ -51,7 +54,7 @@
 
 </div>
 
-<!-- Esto muestra el carrito debajo de los productos -->
+
 <app-carrito></app-carrito>
 
 

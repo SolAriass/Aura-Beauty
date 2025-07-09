@@ -13,24 +13,25 @@ export interface CarritoItem {
 export class CarritoService {
   private carrito: CarritoItem[] = [];
 
-  // Esto permite a otros componentes "escuchar" los cambios en el carrito
+
   private carritoSubject = new BehaviorSubject<CarritoItem[]>([]);
   carrito$ = this.carritoSubject.asObservable();
 
-  // Método para agregar un producto al carrito
+
   agregarProducto(producto: Producto) {
     const existe = this.carrito.find(item => item.producto.id === producto.id);
 
     if (existe) {
-      existe.cantidad++; // si ya estaba, le sumo cantidad
+      existe.cantidad++;
     } else {
-      this.carrito.push({ producto, cantidad: 1 }); // si no estaba, lo agrego
+      this.carrito.push({ producto, cantidad: 1 });
     }
-    // Avisamos a los que estén "escuchando" que el carrito cambió
+
     this.carritoSubject.next(this.carrito);
+    localStorage.setItem('carrito', JSON.stringify(this.carrito));
   }
 
-  // Obtener el total de la compra
+
   obtenerTotal(): number {
     return this.carrito.reduce(
       (total, item) => total + item.producto.precio * item.cantidad,
@@ -38,20 +39,28 @@ export class CarritoService {
     );
   }
 
-  // Devuelve los productos
+
   obtenerCarrito(): CarritoItem[] {
+     const carritoGuardado = localStorage.getItem('carrito');
+
+  if (carritoGuardado) {
+    this.carrito = JSON.parse(carritoGuardado);
+    this.carritoSubject.next(this.carrito);
+  }
     return this.carrito;
   }
 
-  // Limpia el carrito
+
   vaciarCarrito() {
     this.carrito = [];
     this.carritoSubject.next(this.carrito);
+    localStorage.removeItem('carrito');
   }
 
   actualizarCarrito(nuevoCarrito: CarritoItem[]) {
   this.carrito = nuevoCarrito;
   this.carritoSubject.next(this.carrito);
+  localStorage.setItem('carrito', JSON.stringify(this.carrito));
 }
 
 

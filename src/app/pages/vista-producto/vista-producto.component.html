@@ -10,11 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;700&family=Montserrat&display=swap" rel="stylesheet" />
 </head>
 
-<body style="background-color: #DFCFC2; font-family: Montserrat;">
-  <div class="container-fluid m-0 p-0">
-    <h2 class="text-center fw-bold p-3 mb-4" style="background-color: #836d59; font-family: Exo;">
+<body style="background-color: #DFCFC2; font-family: Montserrat;" class="vh-100">
+  <div class="container-fluid m-0 p-0" >
+
+    <div style="background-color: #836d59;" class="d-flex justify-content-center m-0 p-1 w-100 align-items-center">
+    <a routerLink="/productos">
+   <img src="images/logo-aura-beauty.png" class="logo " alt="Logo AB" />
+</a>
+    <h2 class="text-center fw-bold p-3 w-100" style=" font-family: Exo;">
       Detalle del Producto
     </h2>
+     <button class="btn position-relative me-3" style="border: 1px solid #DFCFC2; color: #DFCFC2;" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas">Carrito</button>
+    </div>
 
     <div class="container" *ngIf="producto">
       <div class="row justify-content-center align-items-center">
@@ -48,5 +55,7 @@
       </div>
     </div>
   </div>
+
+  <app-carrito></app-carrito>
 </body>
 </html>
