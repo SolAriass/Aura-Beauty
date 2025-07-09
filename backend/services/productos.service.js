@@ -9,4 +9,9 @@ const getSugerencias = async (query) => {
   return await productoRepo.getSugerencias(query);
 };
 
-module.exports = { listarProductos, getSugerencias };
+async function obtenerPorId(id) {
+  return await productoRepo.obtenerPorId(id);
+}
+
+
+module.exports = { listarProductos, buscarProductosPorNombre, obtenerPorId };

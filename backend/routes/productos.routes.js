@@ -3,6 +3,8 @@ const router = express.Router();
 const { obtenerProductos } = require('../controllers/productos.controller');
 
 // Ruta GET /api/productos
-router.get('/productos', obtenerProductos);
+router.get('/', productosController.obtenerProductos);
+// router.get('/buscar', productosController.buscarProductos);
+router.get('/:id', productosController.obtenerProductoPorId);
 
 module.exports = router;

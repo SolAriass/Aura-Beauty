@@ -5,6 +5,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { canActivateAuth } from './guards/auth.guard';
 import { CosmeticosComponent } from './pages/cosmeticos/cosmeticos.component';
+import { VistaProductoComponent } from './pages/vista-producto/vista-producto.component';
 
 
 
@@ -13,6 +14,8 @@ export const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
   { path: 'productos', component: ProductosComponent },
-  {path: 'cosmeticos', component: CosmeticosComponent},
-  { path: 'home', component: HomeComponent, canActivate: [canActivateAuth]}
+  { path: 'cosmeticos', component: CosmeticosComponent },
+  { path: 'home', component: HomeComponent, canActivate: [canActivateAuth] },
+  { path: 'vista-producto/:id', component: VistaProductoComponent }
+
 ];
