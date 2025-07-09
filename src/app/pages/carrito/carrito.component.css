@@ -1,0 +1,23 @@
+#carritoOffcanvas {
+  width: 600px !important;
+}
+
+.offcanvas-body {
+  padding-bottom: 2rem;
+}
+
+.btn-outline-dark:hover {
+  background-color: #836d59;
+  color: white;
+  border-color: #836d59;
+}
+
+.btn-outline-danger:hover {
+  background-color: #b55353;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #4caf50;
+}
+
