@@ -1,0 +1,8 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Mi Perfil</h2>
+  <div class="card p-4" *ngIf="usuario">
+    <p><strong>Nombre:</strong> {{ usuario.nombre }} {{ usuario.apellido }}</p>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+    <p><strong>Dirección:</strong> {{ usuario.direccion }}</p>
+  </div>
+</div>

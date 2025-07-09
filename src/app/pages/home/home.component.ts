@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarrouselComponent } from "./carrousel/carrousel.component";
 import { AuthService } from '../../services/auth.service';
-import { Router} from '@angular/router';
+import { Router, RouterModule} from '@angular/router';
 import { ProductosService, Producto } from '../productos/productos.service';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+getUserId() {
+throw new Error('Method not implemented.');
+}
   productos: Producto[] = [];
   productosFiltrados: Producto[] = [];
 

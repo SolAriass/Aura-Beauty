@@ -32,7 +32,6 @@ export class VistaProductoComponent implements OnInit {
   }
 
   agregarAlCarrito(producto: any): void {
-    // Aquí iría la lógica real para añadir al carrito
     console.log('Añadido al carrito:', producto);
     alert('Producto añadido al carrito!');
   }

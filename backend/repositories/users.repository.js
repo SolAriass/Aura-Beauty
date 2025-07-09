@@ -9,4 +9,17 @@ const createUser = async (data) => {
   return prisma.user.create({ data });
 };
 
-module.exports = { findByEmail, createUser };
+const findById = async (id) => {
+  return prisma.user.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      nombre: true,
+      apellido: true,
+      email: true,
+      direccion: true
+    }
+  });
+};
+
+module.exports = { findByEmail, createUser, findById };

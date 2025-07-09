@@ -15,4 +15,12 @@ const login = async (email, contrasenia) => {
   return user;
 };
 
-module.exports = { register, login };
+const getById = async (id) => {
+  const user = await userRepo.findById(id);
+  if (!user) {
+    throw new Error('Usuario no encontrado');
+  }
+  return user;
+};
+
+module.exports = { register, login, getById };

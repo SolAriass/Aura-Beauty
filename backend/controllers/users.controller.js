@@ -22,4 +22,13 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+const getPerfil = async (req, res) => {
+  try {
+    const usuario = await userService.getById(req.usuario.id);
+    res.json(usuario);
+  } catch (err) {
+    res.status(404).json({ mensaje: err.message });
+  }
+};
+
+module.exports = { registerUser, loginUser, getPerfil };
