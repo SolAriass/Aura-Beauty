@@ -6,7 +6,7 @@ async function obtenerTodos() {
 }
 
 async function buscarPorNombre(nombre) {
-  return prisma.producto.findMany({
+  return prisma.product.findMany({
     where: {
       nombre: {
         contains: nombre,
@@ -22,4 +22,13 @@ async function buscarPorNombre(nombre) {
   });
 }
 
-module.exports = { obtenerTodos, buscarPorNombre };
+async function obtenerPorId(id) {
+  return prisma.product.findUnique({
+    where: { id: parseInt(id) },
+    include: {
+      genero: true
+    }
+  });
+}
+
+module.exports = { obtenerTodos, buscarPorNombre, obtenerPorId };

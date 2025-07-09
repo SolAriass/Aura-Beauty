@@ -5,11 +5,12 @@ import { AuthService } from '../../services/auth.service';
 import { Router} from '@angular/router';
 import { ProductosService, Producto } from '../productos/productos.service';
 import { BuscadorComponent } from './buscador/buscador.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarrouselComponent, BuscadorComponent, CommonModule],
+  imports: [CarrouselComponent, BuscadorComponent, CommonModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

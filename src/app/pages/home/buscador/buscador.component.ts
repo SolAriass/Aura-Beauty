@@ -1,27 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { BuscadorService, Producto } from './buscador.service';
-import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-buscador',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './buscador.component.html',
   styleUrl: './buscador.component.css'
 })
 export class BuscadorComponent {
-  resultados$: Observable<Producto[]>;
-  private terminoBusqueda = new Subject<string>();
+  searchQuery: string = '';
+  allProducts: Producto[] = [];
+  filteredResults: Producto[] = [];
 
-  constructor(private BuscadorService: BuscadorService) {
-    this.resultados$ = this.terminoBusqueda.pipe(
-      debounceTime(300),              // espera a que el usuario deje de escribir por 300ms
-      distinctUntilChanged(),         // evita repeticiones de la misma búsqueda
-      switchMap((query) => this.BuscadorService.buscarPorNombre(query))
+  constructor(private buscadorService: BuscadorService, private elementRef: ElementRef) {}
+
+  ngOnInit(): void {
+    this.buscadorService.obtenerProductos().subscribe({
+      next: (productos) => {
+        this.allProducts = productos;
+      },
+      error: (err) => {
+        console.error('Error al cargar productos:', err);
+      },
+    });
+  }
+
+  onSearchChange(): void {
+    const query = this.searchQuery.toLowerCase();
+    this.filteredResults = this.allProducts.filter(p =>
+      p.nombre.toLowerCase().includes(query)
     );
   }
 
-  onInputChange(termino: string): void {
-    this.terminoBusqueda.next(termino);
+  selectProduct(product: Producto): void {
+    this.searchQuery = product.nombre;
+    this.filteredResults = [];
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent): void {
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    if (!clickedInside) {
+      this.filteredResults = [];
+    }
   }
 }

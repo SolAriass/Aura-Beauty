@@ -4,7 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { canActivateAuth } from './guards/auth.guard';
-
+import { VistaProductoComponent } from './pages/vista-producto/vista-producto.component';
 
 
 
@@ -13,5 +13,7 @@ export const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
   { path: 'productos', component: ProductosComponent },
-  { path: 'home', component: HomeComponent, canActivate: [canActivateAuth]}
+  { path: 'home', component: HomeComponent, canActivate: [canActivateAuth] },
+  { path: 'vista-producto/:id', component: VistaProductoComponent }
+
 ];

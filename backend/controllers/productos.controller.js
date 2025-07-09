@@ -12,7 +12,18 @@ const obtenerProductos = async (req, res) => {
   }
 };
 
+const obtenerProductoPorId = async (req, res) => {
+   const id = parseInt(req.params.id);
+const producto = await productoService.obtenerPorId(id);
+
+  if (!producto) {
+    return res.status(404).json({ message: 'Producto no encontrado' });
+  }
+
+  res.json(producto);
+};
 
 module.exports = {
-  obtenerProductos
-}
+  obtenerProductos,
+  obtenerProductoPorId
+};

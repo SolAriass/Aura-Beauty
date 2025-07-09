@@ -12,7 +12,6 @@ app.use('/api/users', userRoutes);
 app.use('/api/productos', productosRoutes);
 app.use('/api/ventas', ventasRoutes)
 
-
 app.get('/', (req, res) => {
   res.send('¡Backend funcionando desde Angular!');
 });
