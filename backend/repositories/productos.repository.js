@@ -1,8 +1,48 @@
 const { PrismaClient } = require('../generated/prisma');
 const prisma = new PrismaClient();
 
-async function obtenerTodos() {
-  return prisma.product.findMany();
+async function obtenerTodos(filtros = {}) {
+  const { nombre, precio, categoria } = filtros;
+
+  return prisma.product.findMany({
+    where: {
+      AND: [
+        nombre
+          ? {
+              nombre: {
+                contains: nombre,
+                mode: 'insensitive'
+              }
+            }
+          : {},
+        categoria
+          ? {
+              idCategoria: parseInt(categoria)
+            }
+          : {}
+      ]
+    },
+    orderBy: precio
+      ? {
+          precio: precio === 'asc' ? 'asc' : 'desc'
+        }
+      : undefined,
+    include: {
+      categoria: true
+    }
+  });
+}
+
+async function obtenerCategoriasUnicas() {
+  return prisma.categoria.findMany({
+    select: {
+      id: true,
+      nombre: true
+    },
+    orderBy: {
+      nombre: 'asc'
+    }
+  });
 }
 
 async function buscarPorNombre(nombre) {
@@ -26,9 +66,15 @@ async function obtenerPorId(id) {
   return prisma.product.findUnique({
     where: { id: parseInt(id) },
     include: {
-      genero: true
+      genero: true,
+      categoria: true
     }
   });
 }
 
-module.exports = { obtenerTodos, buscarPorNombre, obtenerPorId };
+module.exports = {
+  obtenerTodos,
+  buscarPorNombre,
+  obtenerPorId,
+  obtenerCategoriasUnicas
+};
