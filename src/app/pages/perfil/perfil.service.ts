@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 export interface Usuario {
   id: number;
@@ -19,7 +19,21 @@ export class UsuarioService {
   constructor(private http: HttpClient) {}
 
   obtenerPerfil(): Observable<Usuario> {
-    const id = localStorage.getItem('usuarioId');
+    const usuarioStr = localStorage.getItem('usuario');
+
+    if (!usuarioStr) {
+      console.error('No hay usuario en localStorage');
+      return throwError(() => new Error('Usuario no encontrado'));
+    }
+
+    const usuario = JSON.parse(usuarioStr);
+    const id = usuario.id;
+
+    if (!id) {
+      console.error('El usuario no tiene ID');
+      return throwError(() => new Error('ID de usuario no válido'));
+    }
+
     return this.http.get<Usuario>(`${this.apiUrl}/${id}`);
   }
 }
