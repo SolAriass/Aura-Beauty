@@ -6,11 +6,11 @@ import { CarritoComponent } from '../carrito/carrito.component';
 import { CarritoService } from '../../services/carrito.service';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../../shared/footer/footer.component';
-import { BuscadorComponent } from "../home/buscador/buscador.component";
+import { BuscadorComponent } from "../../shared/buscador/buscador.component";
 
 @Component({
   selector: 'app-vista-producto',
-  imports: [NgIf, CarritoComponent, RouterModule, FooterComponent, BuscadorComponent],
+  imports: [NgIf, CarritoComponent, RouterModule, FooterComponent],
   templateUrl: './vista-producto.component.html',
   styleUrl: './vista-producto.component.css'
 })
