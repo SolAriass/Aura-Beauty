@@ -1,0 +1,27 @@
+.perfil-wrapper {
+  min-height: 100vh;
+  background-color: #f2e4db; /* igual que el fondo del home */
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.perfil-card {
+  background-color: #fff;
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem 2.5rem;
+  border: 1px solid #d4af7f;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.perfil-card h2 {
+  color: #3e2f26;
+  font-family: 'Poppins', sans-serif;
+}
+
+.perfil-info p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #5b4433;
+  font-family: 'Poppins', sans-serif;
+}

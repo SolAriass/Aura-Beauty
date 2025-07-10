@@ -17,14 +17,7 @@
 </head>
 <body style="background-color: #DFCFC2; font-family: Montserrat;" >
   <div class="container-fluid m-0 p-0">
-    <div class="d-flex justify-content-center align-items-center m-0 p-3" style="background-color: #836d59;">
-      <a routerLink="/home">
-        <img src="images/logo-aura-beauty.png" class="logo" alt="Logo AB" />
-      </a>
-
-      <h2 class="text-center fw-bold w-100" style="font-family: Exo;">Lista de Productos</h2>
-      <button class="btn position-relative me-3" style="border: 1px solid #DFCFC2; color: #DFCFC2;" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas">Carrito</button>
-    </div>
+    <app-header></app-header>
 
     <div class="d-flex justify-content-center gap-2 align-items-center m-3">
       <button class="btn btn-dark" (click)="filtrarPrecioDesc()">Filtrar por mayor precio</button>
@@ -60,6 +53,7 @@
 
 <app-carrito></app-carrito>
 
+<app-footer></app-footer>
 
 </body>
 </html>

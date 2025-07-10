@@ -92,5 +92,5 @@
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  z-index: 20;
+  z-index: 4;
 }

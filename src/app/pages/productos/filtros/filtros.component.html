@@ -1,0 +1,46 @@
+<!-- Título -->
+<h5 class="fw-bold mb-3">Filtrar por:</h5>
+
+<!-- Tipo -->
+<div class="mb-3">
+  <label class="form-label">Tipo</label>
+  <select class="form-select" [(ngModel)]="tipoSeleccionado" (change)="emitirFiltros()">
+    <option value="">Todos</option>
+    <option value="maquillaje">Maquillaje</option>
+    <option value="perfume">Perfume</option>
+  </select>
+</div>
+
+<!-- Género -->
+<div class="mb-3">
+  <label class="form-label">Género</label>
+  <div *ngFor="let genero of generos">
+    <input type="checkbox" [value]="genero" (change)="onGeneroChange($event)" /> {{ genero }}
+  </div>
+</div>
+
+<!-- Categoría -->
+<div class="mb-3">
+  <label class="form-label">Categoría</label>
+  <div *ngFor="let categoria of categorias">
+    <input type="checkbox" [value]="categoria" (change)="onCategoriaChange($event)" /> {{ categoria }}
+  </div>
+</div>
+
+<!-- Marca -->
+<div class="mb-3">
+  <label class="form-label">Marca</label>
+  <div *ngFor="let marca of marcas">
+    <input type="checkbox" [value]="marca" (change)="onMarcaChange($event)" /> {{ marca }}
+  </div>
+</div>
+
+<!-- Precio -->
+<div class="mb-3">
+  <label class="form-label">Rango de Precio</label>
+  <div class="d-flex gap-2">
+    <input type="number" class="form-control" [(ngModel)]="precioMin" placeholder="Mínimo" />
+    <input type="number" class="form-control" [(ngModel)]="precioMax" placeholder="Máximo" />
+  </div>
+  <button class="btn btn-sm btn-dark mt-2" (click)="emitirFiltros()">Aplicar</button>
+</div>

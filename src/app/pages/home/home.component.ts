@@ -4,66 +4,44 @@ import { CarrouselComponent } from "./carrousel/carrousel.component";
 import { AuthService } from '../../services/auth.service';
 import { Router} from '@angular/router';
 import { ProductosService, Producto } from '../productos/productos.service';
-import { BuscadorComponent } from './buscador/buscador.component';
+import { BuscadorComponent } from '../../shared/buscador/buscador.component';
 import { FormsModule } from '@angular/forms';
 import { CarritoComponent } from "../carrito/carrito.component";
 import { RouterModule } from '@angular/router';
 import { CarritoService } from "../../services/carrito.service";
+import { FooterComponent } from '../../shared/footer/footer.component';
+import { HeaderComponent } from '../../shared/header/header.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarrouselComponent, BuscadorComponent, CommonModule, FormsModule, CarritoComponent, RouterModule],
+  imports: [CarrouselComponent, BuscadorComponent, CommonModule, FormsModule, CarritoComponent, RouterModule, FooterComponent, HeaderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
   productos: Producto[] = [];
   productosFiltrados: Producto[] = [];
-  carritoService: CarritoService;
 
- constructor(private authService: AuthService, private router: Router,  private productosService: ProductosService, carritoService: CarritoService) {
-   this.carritoService = carritoService;
+ constructor(private router: Router,  private productosService: ProductosService) {
  }
 
  masVendidos: Producto[] = [];
 
-ngOnInit(): void {
-  this.productosService.obtenerProductos().subscribe({
-    next: (data) => {
-      this.productos = data;
-      this.productosFiltrados = data;
+  ngOnInit(): void {
+    this.productosService.obtenerProductos().subscribe({
+      next: (data) => {
+        this.productos = data;
+        this.productosFiltrados = data;
 
-      this.masVendidos = this.productos.slice(0, 5);
-    },
-    error: (err) => console.error(err)
-  });
-}
-
-filtrarProductos(event: Event): void {
-  const inputElement = event.target as HTMLInputElement;
-  const valor = inputElement?.value?.trim().toLowerCase() || '';
-
-  if (!valor) {
-    this.productosFiltrados = this.productos;
-    return;
+        this.masVendidos = this.productos.slice(0, 5);
+      },
+      error: (err) => console.error(err)
+    });
   }
 
-  this.productosFiltrados = this.productos.filter(p =>
-    p.nombre.toLowerCase().includes(valor)
-  );
-}
-
-
- irAProductos() {
+  irAProductos() {
     this.router.navigate(['/productos']);
-  }
-
-
-  logout() {
-    this.carritoService.vaciarCarrito();
-    this.authService.logout();
-    this.router.navigate(['/login']);
   }
 
 

@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { VentasService } from '../../services/ventas.service';
 import { CommonModule } from '@angular/common';
 import { CarritoComponent } from '../carrito/carrito.component';
+import { FooterComponent } from '../../shared/footer/footer.component';
 
 
 @Component({
   selector: 'app-mis-pedidos',
-  imports: [CommonModule, RouterModule, CarritoComponent],
+  imports: [CommonModule, RouterModule, CarritoComponent, FooterComponent],
   templateUrl: './mis-pedidos.component.html',
   styleUrl: './mis-pedidos.component.css'
 })

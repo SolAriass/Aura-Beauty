@@ -14,89 +14,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
-<body class="vh-100" style="background-color: #DFCFC2;">
-  <header class="d-flex justify-content-center align-items-center p-4" style="background-color: #836d59;">
-  <div class="w-100">
- <img src="images/logo-aura-beauty.png" class="logo" alt="Logo AB" />
-  </div>
+<body style="background-color: #DFCFC2;">
+  <!-- HEADER CON BUSCADOR INCLUIDO -->
+  <app-header></app-header>
 
+  <!-- CARROUSEL -->
+  <app-carrousel class="carrousel"></app-carrousel>
 
-
-
- <h1 class="text-dark w-100 fw-bold" style="font-family: Parisienne;">Aura Beauty</h1>
-
-  <div class="m-2 w-25">
-    <a routerLink="/mis-pedidos" class="fw-bold btn p-2" style="background-color: #DFCFC2; color: #836d59 ; font-family: Montserrat;">Ver pedidos</a>
-  </div>
-
-
-  <!-- PERFIL Y CARRITO -->
-  <div class="user-actions">
-    <button class="cart-btn position-relative me-3" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#ded0c2" viewBox="0 0 24 24">
-        <path d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 0c-1.104
-        0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zM7.334 13l.866-2h8.6c.741 0
-        1.386-.405 1.723-1.045l3.349-6.29a1 1 0 0 0-.883-1.465H5.21l-.94-2H0v2h2l3.6
-        7.59-1.35 2.44C3.52 14.37 4.48 16 6 16h12v-2H6.42a.5.5 0 0 1-.476-.658L7.334 13z"/>
-      </svg>
-    </button>
-
-    <div class="profile-wrapper">
-      <button class="profile-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ded0c2" viewBox="0 0 24 24">
-          <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.3 0-9.8 1.7-9.8
-          5v2.4h19.6v-2.4c0-3.3-6.5-5-9.8-5z"/>
-        </svg>
-      </button>
-      <div class="profile-popup">
-        <a routerLink="/perfil">👤 Ver perfil</a>
-        <button (click)="logout()">Cerrar sesión</button>
-      </div>
-    </div>
-  </div>
-</header>
-
-
-   <div class="search-container w-100 mt-3" style="font-family: Montserrat;">
-    <app-buscador></app-buscador>
-  </div>
-
-
- <app-carrousel class="carrousel"></app-carrousel>
-
-
- <div class="d-flex justify-content-center align-items-center">
+  <div class="d-flex justify-content-center align-items-center">
     <button class="btn fw-bold p-2 w-25" style="background-color: #836d59; font-family: Montserrat;" (click)="irAProductos()">
       Ver todos los productos
     </button>
-</div>
+  </div>
 
+  <!-- CARRITO -->
+  <app-carrito></app-carrito>
 
-
-
-
-
-
-
-
-
-
-
-  <!-- <main class="main-content">
-    <button class="filter-btn"><i class="fas fa-chevron-down"></i>Filtrar por</button>
-
-    <section class="products-grid">
-       Repetí esta card para cada perfume
-      <div class="product-card">
-        <img src="" alt="Perfume 1"/>
-      </div>
-      <div class="product-card">
-        <img src="" alt="Perfume 2"/>
-      </div>
-      ...más productos
-    </section>
-  </main> -->
-<app-carrito></app-carrito>
+  <!-- FOOTER -->
+  <app-footer></app-footer>
 
 </body>
 </html>
