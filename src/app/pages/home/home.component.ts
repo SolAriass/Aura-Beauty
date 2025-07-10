@@ -9,11 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { CarritoComponent } from "../carrito/carrito.component";
 import { RouterModule } from '@angular/router';
 import { CarritoService } from "../../services/carrito.service";
+import { FooterComponent } from '../../shared/footer/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarrouselComponent, BuscadorComponent, CommonModule, FormsModule, CarritoComponent, RouterModule],
+  imports: [CarrouselComponent, BuscadorComponent, CommonModule, FormsModule, CarritoComponent, RouterModule, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

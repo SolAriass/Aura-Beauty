@@ -1,0 +1,11 @@
+<div class="perfil-wrapper d-flex align-items-center justify-content-center">
+  <div class="perfil-card rounded-4 shadow">
+    <h2 class="text-center fw-bold mb-4">Mi Perfil</h2>
+
+    <div *ngIf="usuario" class="perfil-info">
+      <p><strong>Nombre:</strong> {{ usuario.nombre }} {{ usuario.apellido }}</p>
+      <p><strong>Email:</strong> {{ usuario.email }}</p>
+      <p><strong>Dirección:</strong> {{ usuario.direccion }}</p>
+    </div>
+  </div>
+</div>

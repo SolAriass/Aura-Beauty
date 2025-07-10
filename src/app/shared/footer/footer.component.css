@@ -1,0 +1,15 @@
+.footer-aura {
+  background-color: #3e2f26;
+  color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+  border-top: 4px solid #d4af7f;
+}
+.footer-aura h5 {
+  color: #f9d5a7;
+}
+.footer-aura ul {
+  padding-left: 1rem;
+}
+.footer-aura p, .footer-aura li {
+  font-size: 0.9rem;
+}

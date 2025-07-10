@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { CarritoService } from '../../services/carrito.service';
 import { CarritoComponent } from "../carrito/carrito.component";
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from '../../shared/footer/footer.component';
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule, FormsModule, CarritoComponent, RouterModule],
+  imports: [CommonModule, FormsModule, CarritoComponent, RouterModule, FooterComponent],
   templateUrl: './productos.component.html',
   styleUrl: './productos.component.css'
 })
