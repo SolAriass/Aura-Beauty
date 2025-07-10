@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductosService } from '../productos/productos.service';
+import { Producto, ProductosService } from '../productos/productos.service';
 import { NgIf} from '@angular/common';
+import { CarritoComponent } from '../carrito/carrito.component';
+import { CarritoService } from '../../services/carrito.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-vista-producto',
-  imports: [NgIf],
+  imports: [NgIf, CarritoComponent, RouterModule],
   templateUrl: './vista-producto.component.html',
   styleUrl: './vista-producto.component.css'
 })
@@ -14,7 +17,8 @@ export class VistaProductoComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productosService: ProductosService
+    private productosService: ProductosService,
+    private carritoService: CarritoService
   ) {}
 
   ngOnInit(): void {
@@ -31,9 +35,8 @@ export class VistaProductoComponent implements OnInit {
     }
   }
 
-  agregarAlCarrito(producto: any): void {
-    // Aquí iría la lógica real para añadir al carrito
-    console.log('Añadido al carrito:', producto);
-    alert('Producto añadido al carrito!');
+  agregarAlCarrito(producto: Producto): void {
+this.carritoService.agregarProducto(producto);
+alert('Producto añadido al carrito!');
   }
 }

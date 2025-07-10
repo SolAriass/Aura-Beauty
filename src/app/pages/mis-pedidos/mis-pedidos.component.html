@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="vh-100" style="background-color: #DFCFC2;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body style="background-color: #DFCFC2;" class="m-0">
+
+
+<div class="container-fluid p-0 m-0">
+  <div class="d-flex justify-content-center mb-3 p-3 align-items-center m-0" style="background-color: #836d59;">
+     <a routerLink="/home">
+      <img src="images/logo-aura-beauty.png" class="logo" alt="Logo AB" />
+     </a>
+    <h2 class="text-center w-100 fw-bold" style="font-family: Exo;">Mis Pedidos</h2>
+      <button class="btn position-relative me-3" style="border: 1px solid #DFCFC2; color: #DFCFC2;" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas">Carrito</button>
+  </div>
+
+
+  <div *ngIf="pedidos.length === 0">
+    <p style="color: #836d59;">No hiciste pedidos aún.</p>
+  </div>
+
+  <div *ngFor="let pedido of pedidos" class="card m-3 rounded-3" style="font-family: Montserrat;">
+    <div class="card-body rounded-3" style="background-color: #A38972;">
+      <h5 class="fw-bold" style="color: #524336;">Pedido #{{ pedido.id }} - {{ pedido.fecha | date }}</h5>
+      <p>Total: <span class="fw-bold">${{ pedido.total }}</span> </p>
+
+      <ul>
+        <p *ngFor="let item of pedido.detalles" class="p-0 m-0">
+          {{ item.cantidad }} - {{ item.producto.nombre }} = <span class="fw-bold">${{ item.subtotal }}</span>
+        </p>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<app-carrito></app-carrito>
+</body>
+</html>
+
+
+
+

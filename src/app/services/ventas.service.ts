@@ -26,4 +26,11 @@ export class VentasService {
   finalizarCompra(venta: Venta): Observable<any> {
     return this.http.post(this.apiUrl, venta);
   }
+
+getVentasPorUsuario(usuarioId: number): Observable<any> {
+  return this.http.get(`http://localhost:3000/api/ventas/${usuarioId}`);
+}
+
+
+
 }

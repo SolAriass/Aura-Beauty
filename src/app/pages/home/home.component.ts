@@ -6,19 +6,25 @@ import { Router} from '@angular/router';
 import { ProductosService, Producto } from '../productos/productos.service';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { FormsModule } from '@angular/forms';
+import { CarritoComponent } from "../carrito/carrito.component";
+import { RouterModule } from '@angular/router';
+import { CarritoService } from "../../services/carrito.service";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarrouselComponent, BuscadorComponent, CommonModule, FormsModule],
+  imports: [CarrouselComponent, BuscadorComponent, CommonModule, FormsModule, CarritoComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
   productos: Producto[] = [];
   productosFiltrados: Producto[] = [];
+  carritoService: CarritoService;
 
- constructor(private authService: AuthService, private router: Router,  private productosService: ProductosService,) {}
+ constructor(private authService: AuthService, private router: Router,  private productosService: ProductosService, carritoService: CarritoService) {
+   this.carritoService = carritoService;
+ }
 
  masVendidos: Producto[] = [];
 
@@ -49,12 +55,13 @@ filtrarProductos(event: Event): void {
 }
 
 
- irAPerfumes() {
+ irAProductos() {
     this.router.navigate(['/productos']);
   }
 
 
   logout() {
+    this.carritoService.vaciarCarrito();
     this.authService.logout();
     this.router.navigate(['/login']);
   }

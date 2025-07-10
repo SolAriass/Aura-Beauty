@@ -22,7 +22,7 @@ model User {
   apellido    String
   direccion   String
 
-  ventas      Venta[]   // Relación uno a muchos
+  ventas      Venta[]
 }
 
 model Product {
@@ -37,7 +37,7 @@ model Product {
 
   categoria   Categoria     @relation(fields: [idCategoria], references: [id])
   genero      Genero        @relation(fields: [idGenero], references: [id])
-  detalles    DetalleVenta[] // Relación uno a muchos con detalle de ventas
+  detalles    DetalleVenta[]
 }
 
 model Categoria {
@@ -58,7 +58,7 @@ model Venta {
   total      Float
   usuarioId  Int
   usuario    User            @relation(fields: [usuarioId], references: [id])
-  detalles   DetalleVenta[]  // Una venta tiene varios detalles
+  detalles   DetalleVenta[]
 }
 
 model DetalleVenta {

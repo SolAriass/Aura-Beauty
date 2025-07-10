@@ -15,4 +15,8 @@ const login = async (email, contrasenia) => {
   return user;
 };
 
-module.exports = { register, login };
+const getById = async (id) => {
+  return await userRepo.findById(id);
+};
+
+module.exports = { register, login, getById };
