@@ -1,18 +1,19 @@
-<header class="d-flex justify-content-center align-items-center p-4" style="background-color: #836d59;">
+<header class="d-flex justify-content-center align-items-center p-4" style="background-color: #ded0c2;">
     <!-- <div class="w-100">
       <img src="images/logo-aura-beauty.png" class="logo" alt="Logo AB" />
     </div> -->
 
     <app-buscador></app-buscador>
 
-    <h1 class="text-dark w-100 fw-bold" style="font-family: Parisienne;">Aura Beauty</h1>
-
-    <!-- MIS PEDIDOS -->
+    <div class="titulo-principal">
+      <h1 class="text-dark w-100 fw-bold" style="font-family: Parisienne;">Aura Beauty</h1>
+    </div>
 
     <!-- PERFIL Y CARRITO -->
     <div class="user-actions">
+      <!-- MIS PEDIDOS -->
       <div class="mis-pedidos">
-        <a [routerLink]="['/mis-pedidos']" class="fw-bold btn p-2" style="background-color: #DFCFC2; color: #836d59 ; font-family: Montserrat;">Ver pedidos</a>
+        <a class="ver-pedidos" [routerLink]="['/mis-pedidos']">Ver pedidos</a>
       </div>
 
       <button class="cart-btn position-relative me-3" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas">

@@ -7,10 +7,11 @@ import { CarritoService } from '../../services/carrito.service';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { BuscadorComponent } from "../../shared/buscador/buscador.component";
+import { HeaderComponent } from '../../shared/header/header.component';
 
 @Component({
   selector: 'app-vista-producto',
-  imports: [NgIf, CarritoComponent, RouterModule, FooterComponent],
+  imports: [NgIf, CarritoComponent, RouterModule, FooterComponent, HeaderComponent],
   templateUrl: './vista-producto.component.html',
   styleUrl: './vista-producto.component.css'
 })

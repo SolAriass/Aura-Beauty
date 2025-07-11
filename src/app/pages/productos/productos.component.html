@@ -15,46 +15,59 @@
 <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
-<body style="background-color: #DFCFC2; font-family: Montserrat;" >
-  <div class="container-fluid m-0 p-0">
+<body>
+  <div class="main-container">
     <app-header></app-header>
 
-    <div class="d-flex justify-content-center gap-2 align-items-center m-3">
-      <button class="btn btn-dark" (click)="filtrarPrecioDesc()">Filtrar por mayor precio</button>
-      <button class="btn btn-dark" (click)="filtrarPrecioAsc()">Filtrar por menor precio</button>
-      <button class="btn btn-dark" (click)="filtrarPorNombre()">Filtrar por nombre</button>
+    <div class="productos-container">
 
-      <select class="form-select w-auto" [(ngModel)]="categoriaSeleccionada" (change)="onCategoriaChange()">
-        <option value="">Todas las categorías</option>
-        <option *ngFor="let cat of categorias" [value]="cat.id">{{ cat.nombre }}</option>
-      </select>
-    </div>
+      <!-- FILTROS -->
+      <div class="filtros-sidebar">
+        <h4>Filtrar productos</h4>
 
-    <div class="card-body d-flex flex-wrap text-center m-0 p-0 rounded-3 gap-4 justify-content-center">
-   <div *ngFor="let p of productos" class="card rounded-3 d-flex flex-column"
-     style="background-color: #A38972; width: 18rem; border: 1px solid #836d59;">
-    <a [routerLink]="['/vista-producto', p.id]" style="cursor: pointer;">
-      <div class="d-flex justify-content-center align-items-center">
-        <img [src]="'images/productos/' + p.url" alt="{{ p.nombre }}" class="card-img-top" style="width: 10rem; height: 10rem; object-fit: cover;">
+        <button (click)="filtrarPrecioDesc()">🔺 Mayor precio</button>
+        <button (click)="filtrarPrecioAsc()">🔻 Menor precio</button>
+        <button (click)="borrarFiltros()">❌ Borrar filtros</button>
+
+
+        <div>
+          <label for="categoria">Categoría:</label>
+          <select id="categoria" [(ngModel)]="categoriaSeleccionada" (change)="onCategoriaChange()">
+            <option *ngFor="let cat of categorias" [value]="cat.id">{{ cat.nombre }}</option>
+          </select>
+        </div>
       </div>
-    </a>
 
-      <h5 class="card-title fw-bold p-4" style="background-color: #836d59; height: auto; font-family: Exo;">{{ p.nombre }}</h5>
-      <p class="card-footer mt-auto m-0 "><strong>Precio: ${{ p.precio }}</strong></p>
-      <button class="btn btn-dark" (click)="agregarAlCarrito(p)">Agregar al carrito</button>
+      <main class="contenido-productos">
+        <div *ngIf="nombreBuscado" class="resultado-busqueda">
+          <p>Resultados de "<strong>{{ nombreBuscado }}</strong>"</p>
+        </div>
+        <div *ngIf="categoriaSeleccionada" class="resultado-busqueda">
+          <p *ngIf="categoriaNombre">Categoría: {{ categoriaNombre }}</p>
+        </div>
 
+        <!-- PRODUCTOS -->
+        <div class="grid-productos">
+          <div *ngFor="let p of productos" class="card-producto">
+            <a [routerLink]="['/vista-producto', p.id]">
+              <img [src]="'images/productos/' + p.url" [alt]="p.nombre" />
+            </a>
 
+            <h5>{{ p.nombre }}</h5>
+            <p>Precio: ${{ p.precio }}</p>
+            <button
+              [ngClass]="{ 'agregado': estadoBotones[p.id] }"
+              (click)="agregarAlCarrito(p)">
+              {{ estadoBotones[p.id] ? '¡Agregado!' : 'Agregar al carrito' }}
+            </button>
+          </div>
+        </div>
+      </main>
     </div>
+
+    <app-carrito></app-carrito>
+    <app-footer></app-footer>
   </div>
-
-
-</div>
-
-
-<app-carrito></app-carrito>
-
-<app-footer></app-footer>
-
 </body>
 </html>
 

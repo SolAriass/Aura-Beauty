@@ -16,10 +16,13 @@ import { HeaderComponent } from '../../shared/header/header.component';
   styleUrl: './productos.component.css'
 })
 export class ProductosComponent implements OnInit {
-
+  estadoBotones: Record<number, boolean> = {};
+  nombreBuscado: string = '';
   productos: Producto[] = [];
-  categorias: Categoria[] = []; // ahora correctamente tipado
-  categoriaSeleccionada: string = ''; // siempre string para evitar conflictos con ngModel
+  categorias: Categoria[] = [];
+  categoriaSeleccionada: string = '';
+  categoriaNombre: string = '';
+
 
   constructor(
     private productosService: ProductosService,
@@ -29,12 +32,14 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {
     const filtrosGuardados = localStorage.getItem('filtros');
     const filtros = filtrosGuardados ? JSON.parse(filtrosGuardados) : {};
-    this.cargarProductos(filtros);
+    this.nombreBuscado = filtros.nombre || '';
 
-    this.categoriaSeleccionada = filtros.categoria || '';
-    this.cargarProductos(filtros);
-
-
+    this.productosService.obtenerProductosConFiltros(filtros).subscribe({
+      next: (data) => {
+        this.productos = data.map(p => ({ ...p, agregado: false }));
+      },
+      error: (err) => console.error('Error al cargar productos:', err)
+    });
 
     this.productosService.obtenerCategorias().subscribe({
       next: (data) => this.categorias = data,
@@ -42,10 +47,12 @@ export class ProductosComponent implements OnInit {
     });
   }
 
+
   cargarProductos(filtros: { nombre?: string; precio?: string; categoria?: string } = {}) {
     localStorage.setItem('filtros', JSON.stringify(filtros));
 
     const filtrosLimpiados: any = {};
+
 
     if (filtros.nombre) filtrosLimpiados.nombre = filtros.nombre;
     if (filtros.precio) filtrosLimpiados.precio = filtros.precio;
@@ -53,6 +60,17 @@ export class ProductosComponent implements OnInit {
     // Solo agregamos filtro si hay categoría seleccionada
     if (filtros.categoria && filtros.categoria !== '') {
       filtrosLimpiados.categoria = filtros.categoria;
+    }
+
+    // Actualizamos la categoría seleccionada
+    if (filtros.categoria === '1') {
+      this.categoriaNombre = 'Perfumes';
+      this.nombreBuscado = '';
+    } else if (filtros.categoria === '2') {
+      this.categoriaNombre = 'Maquillaje';
+      this.nombreBuscado = '';
+    } else {
+      this.categoriaNombre = '';
     }
 
     this.productosService.obtenerProductosConFiltros(filtrosLimpiados).subscribe({
@@ -63,6 +81,12 @@ export class ProductosComponent implements OnInit {
 
   agregarAlCarrito(producto: Producto) {
     this.carritoService.agregarProducto(producto);
+
+    this.estadoBotones[producto.id] = true;
+
+    setTimeout(() => {
+      this.estadoBotones[producto.id] = false;
+    }, 1000);
   }
 
   filtrarPrecioAsc() {
@@ -78,6 +102,13 @@ export class ProductosComponent implements OnInit {
     if (nombre) {
       this.cargarProductos({ nombre, categoria: this.categoriaSeleccionada });
     }
+  }
+
+  borrarFiltros(): void {
+    localStorage.removeItem('filtros');
+    this.categoriaSeleccionada = '';
+    this.nombreBuscado = '';
+    this.cargarProductos(); // Sin filtros
   }
 
   onCategoriaChange() {

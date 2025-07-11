@@ -23,4 +23,12 @@ export class BuscadorService {
   obtenerProductos(): Observable<Producto[]> {
       return this.http.get<Producto[]>(this.apiUrl);
   }
+
+  obtenerProductosPorNombre(nombre?: string): Observable<Producto[]> {
+    const params = new URLSearchParams();
+
+    if (nombre) params.append('nombre', nombre);
+
+    return this.http.get<Producto[]>(`${this.apiUrl}?${params.toString()}`);
+  }
 }
