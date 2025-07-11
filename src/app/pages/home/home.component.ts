@@ -8,6 +8,7 @@ import { CarritoComponent } from "../carrito/carrito.component";
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { RecomendadosComponent } from './recomendados/recomendados.component';
+import { CarritoService } from '../../services/carrito.service';
 
 
 @Component({
@@ -21,8 +22,7 @@ export class HomeComponent {
   productos: Producto[] = [];
   productosFiltrados: Producto[] = [];
 
- constructor(private router: Router,  private productosService: ProductosService) {
- }
+ constructor(private router: Router,  private productosService: ProductosService) {}
 
   verCategoria(categoriaId: number): void {
     const filtros = { categoria: categoriaId };

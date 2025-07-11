@@ -1,19 +1,24 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { RecomendadosService } from './recomendados.service';
+import { Producto, RecomendadosService } from './recomendados.service';
 import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { CarritoService } from '../../../services/carrito.service';
 
 @Component({
   selector: 'app-recomendados',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './recomendados.component.html',
   styleUrl: './recomendados.component.css'
 })
 export class RecomendadosComponent {
   productosRecomendados: any[] = [];
+  estadoBotones: Record<number, boolean> = {};
 
   @ViewChild('carousel', { static: false }) carousel!: ElementRef;
 
-  constructor(private recomendadosService: RecomendadosService) {}
+  constructor(private recomendadosService: RecomendadosService, private router: Router, private carritoService: CarritoService) {
+    carritoService = carritoService;
+  }
 
   /*Obtenemos los productos recomendados al iniciar el componente */
   ngOnInit(): void {
@@ -35,9 +40,14 @@ export class RecomendadosComponent {
     return copia;
   }
 
-  agregarAlCarrito(producto: any): void {
-    // lógica para agregar al carrito
-    console.log('Producto agregado:', producto.nombre);
+  agregarAlCarrito(producto: Producto) {
+    this.carritoService.agregarProducto(producto);
+
+    this.estadoBotones[producto.id] = true;
+
+    setTimeout(() => {
+      this.estadoBotones[producto.id] = false;
+    }, 1000);
   }
 
   scrollDerecha(): void {

@@ -116,12 +116,10 @@ app-carrousel {
   color: #a98a6a;
 }
 
-/* Línea fina debajo */
 .linea-separadora {
   border: none;
   border-top: 1.5px solid #333;
   margin: 0 30px 30px 30px;
 }
-
 
 

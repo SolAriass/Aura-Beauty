@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto, ProductosService } from '../productos/productos.service';
-import { NgIf} from '@angular/common';
+import { CommonModule, NgIf} from '@angular/common';
 import { CarritoComponent } from '../carrito/carrito.component';
 import { CarritoService } from '../../services/carrito.service';
 import { RouterModule } from '@angular/router';
@@ -11,12 +11,14 @@ import { HeaderComponent } from '../../shared/header/header.component';
 
 @Component({
   selector: 'app-vista-producto',
-  imports: [NgIf, CarritoComponent, RouterModule, FooterComponent, HeaderComponent],
+  imports: [NgIf, CarritoComponent, RouterModule, FooterComponent, HeaderComponent, CommonModule],
   templateUrl: './vista-producto.component.html',
   styleUrl: './vista-producto.component.css'
 })
 export class VistaProductoComponent implements OnInit {
   producto: any;
+  estadoBotones: Record<number, boolean> = {};
+
 
   constructor(
     private route: ActivatedRoute,
@@ -38,8 +40,13 @@ export class VistaProductoComponent implements OnInit {
     }
   }
 
-  agregarAlCarrito(producto: Producto): void {
-this.carritoService.agregarProducto(producto);
-alert('Producto añadido al carrito!');
+  agregarAlCarrito(producto: Producto) {
+    this.carritoService.agregarProducto(producto);
+
+    this.estadoBotones[producto.id] = true;
+
+    setTimeout(() => {
+      this.estadoBotones[producto.id] = false;
+    }, 1000);
   }
 }

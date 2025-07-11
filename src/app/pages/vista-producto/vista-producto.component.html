@@ -11,46 +11,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;700&family=Montserrat&display=swap" rel="stylesheet" />
 </head>
 
-<body style="background-color: #DFCFC2; font-family: Montserrat;" class="vh-100">
+<body>
+
   <app-header></app-header>
 
-  <div class="container-fluid m-0 p-0" >
+  <main class="producto-detalle" *ngIf="producto">
 
-    <div class="container" *ngIf="producto">
-      <div class="row justify-content-center align-items-center">
-
-        <!-- Imagen principal -->
-        <div class="col-md-6 text-center producto-imagen">
+    <!-- Imagen con fondo -->
+    <div class="imagen-con-fondo">
       <img
         [src]="'images/productos/' + producto.url"
-        alt="{{ producto.nombre }}"
-        class="img-fluid mb-3"
+        [alt]="producto.nombre"
       />
     </div>
 
-        <!-- Detalle del producto -->
-        <div class="col-md-6">
-          <h5 class="text-uppercase" style="color: #000;">{{ producto.marca }}</h5>
-          <h2 class="fw-bold" style="font-family: Exo; color: #333;">{{ producto.nombre }}</h2>
+    <!-- Información del producto -->
+    <div class="info-producto">
+      <h6>{{ producto.marca }}</h6>
+      <h2>{{ producto.nombre }}</h2>
+      <h3>${{ producto.precio }}</h3>
 
-          <h4 class="text-primary fw-bold mb-3" style="color: #257a8e !important;">
-            ${{ producto.precio }}
-          </h4>
+      <button
+        [ngClass]="{ 'agregado': estadoBotones[producto.id] }"
+        (click)="agregarAlCarrito(producto)">
+        {{ estadoBotones[producto.id] ? '¡Agregado!' : 'Agregar al carrito' }}
+      </button>
 
-          <button class="btn btn-dark px-4 py-2 mb-3" (click)="agregarAlCarrito(producto)">
-            AÑADIR AL CARRITO
-          </button>
-
-          <p class="mt-3">{{ producto.descripcion }}</p>
-          <p><strong>Clasificación:</strong> {{ producto.genero.nombre }}</p>
-        </div>
-
-      </div>
+      <p>{{ producto.descripcion }}</p>
+      <p><strong>Clasificación:</strong> {{ producto.genero.nombre }}</p>
     </div>
-  </div>
+
+  </main>
 
   <app-carrito></app-carrito>
-
   <app-footer></app-footer>
+
 </body>
+
 </html>

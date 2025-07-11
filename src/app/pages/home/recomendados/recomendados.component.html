@@ -8,10 +8,16 @@
 
   <div class="carousel" #carousel>
     <div class="card-producto" *ngFor="let producto of productosRecomendados">
-      <img [src]="'/images/productos/' + producto.url" alt="{{ producto.nombre }}" />
+      <a [routerLink]="['/vista-producto', producto.id]">
+        <img [src]="'/images/productos/' + producto.url" alt="{{ producto.nombre }}" />
+      </a>
       <h5>{{ producto.nombre }}</h5>
-      <p>Precio: ${{ producto.precio }}</p>
-      <button (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+        <p>Precio: ${{ producto.precio }}</p>
+        <button
+          [ngClass]="{ 'agregado': estadoBotones[producto.id] }"
+          (click)="agregarAlCarrito(producto)">
+          {{ estadoBotones[producto.id] ? '¡Agregado!' : 'Agregar al carrito' }}
+        </button>
     </div>
   </div>
 
