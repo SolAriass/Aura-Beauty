@@ -1,0 +1,23 @@
+  <!-- CARRUSEL DE PRODUCTOS -->
+<div class="carousel-container">
+  <button class="carousel-btn prev" (click)="scrollIzquierda()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#333" viewBox="0 0 24 24">
+      <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+    </svg>
+  </button>
+
+  <div class="carousel" #carousel>
+    <div class="card-producto" *ngFor="let producto of productosRecomendados">
+      <img [src]="'/images/productos/' + producto.url" alt="{{ producto.nombre }}" />
+      <h5>{{ producto.nombre }}</h5>
+      <p>Precio: ${{ producto.precio }}</p>
+      <button (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <button class="carousel-btn next" (click)="scrollDerecha()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#333" viewBox="0 0 24 24">
+      <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+    </svg>
+  </button>
+</div>

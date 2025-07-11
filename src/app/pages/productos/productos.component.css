@@ -94,7 +94,7 @@ body {
 .card-producto {
   width: 100%;
   max-width: 240px;
-  min-height: 330px; /* misma altura para todas */
+  min-height: 350px; /* misma altura para todas */
   background-color: white;
   border-radius: 16px;
   padding: 1rem;
@@ -153,19 +153,4 @@ button.agregado {
   color: #155724 !important;
   transition: all 0.3s ease;
   transform: scale(1.03);
-}
-
-/* Responsive: en pantallas menores, 2 columnas */
-@media (max-width: 992px) {
-  .grid-productos {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .productos-container {
-    flex-direction: column;
-  }
-
-  .filtros-sidebar {
-    width: 100%;
-  }
 }

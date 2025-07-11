@@ -53,7 +53,6 @@ export class ProductosComponent implements OnInit {
 
     const filtrosLimpiados: any = {};
 
-
     if (filtros.nombre) filtrosLimpiados.nombre = filtros.nombre;
     if (filtros.precio) filtrosLimpiados.precio = filtros.precio;
 

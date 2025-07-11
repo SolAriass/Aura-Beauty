@@ -1,27 +1,119 @@
-.perfil-wrapper {
-  min-height: 100vh;
-  background-color: #f2e4db; /* igual que el fondo del home */
-  padding-top: 100px;
-  padding-bottom: 50px;
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f3e7dd;
+  background-size: cover;
+}
+
+.bg-marron {
+  background-color: #836d59;
+  padding: 12px 24px;
+}
+
+.main-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 48px;
+  width: auto;
+}
+
+.titulo-principal {
+  text-align: center;
+}
+
+.titulo {
+  font-family: 'Parisienne', cursive;
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cerrar-sesion {
+  background-color: #DFCFC2;
+  color: #836d59;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  font-family: Montserrat;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.cerrar-sesion:hover {
+  background-color: #fb4040;
+  color: #fff;
+}
+
+/* PERFIL */
+.perfil-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px); /* ajusta según el header/footer */
+  background-color: #f3e7dd; /* tono crema claro */
+  padding: 2rem;
 }
 
 .perfil-card {
-  background-color: #fff;
-  max-width: 500px;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 3rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 480px;
   width: 100%;
-  padding: 2rem 2.5rem;
-  border: 1px solid #d4af7f;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .perfil-card h2 {
-  color: #3e2f26;
-  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: #3b2f2f;
 }
 
 .perfil-info p {
   font-size: 1.1rem;
+  color: #3f3f3f;
   margin-bottom: 1rem;
-  color: #5b4433;
-  font-family: 'Poppins', sans-serif;
+}
+
+.perfil-info strong {
+  color: #1a1a1a;
+}
+
+.editar-btn {
+  margin-top: 1rem;
+  background-color: #3b2f2f;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.editar-btn:hover {
+  background-color: #5b4436;
+}
+
+app-footer {
+  margin-top: 0;
 }

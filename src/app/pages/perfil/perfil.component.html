@@ -1,11 +1,45 @@
-<div class="perfil-wrapper d-flex align-items-center justify-content-center">
-  <div class="perfil-card rounded-4 shadow">
-    <h2 class="text-center fw-bold mb-4">Mi Perfil</h2>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle del Producto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;700&family=Montserrat&display=swap" rel="stylesheet" />
+</head>
 
-    <div *ngIf="usuario" class="perfil-info">
-      <p><strong>Nombre:</strong> {{ usuario.nombre }} {{ usuario.apellido }}</p>
-      <p><strong>Email:</strong> {{ usuario.email }}</p>
-      <p><strong>Dirección:</strong> {{ usuario.direccion }}</p>
+<body style="background-color: #DFCFC2; font-family: Montserrat;" >
+  <header class="main-header bg-marron">
+    <!-- Logo -->
+    <img src="images/logo-aura-beauty.png" class="logo" alt="Logo AB" />
+
+    <!-- Título -->
+    <div class="titulo-principal">
+      <h1 class="fw-bold" style="font-family: 'Parisienne';">Aura Beauty</h1>
+    </div>
+
+    <!-- Acciones de usuario -->
+    <div class="user-actions">
+      <a class="cerrar-sesion" (click)="logout()">Cerrar sesión</a>
+    </div>
+  </header>
+
+
+  <div class="perfil-container">
+    <div class="perfil-card">
+      <h2>Mi Perfil</h2>
+      <div class="perfil-info">
+        <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+        <p><strong>Email:</strong> {{ usuario.email }}</p>
+        <p><strong>Dirección:</strong> {{ usuario.direccion }}</p>
+      </div>
     </div>
   </div>
-</div>
+
+  <app-footer></app-footer>
+</body>
+</html>
+

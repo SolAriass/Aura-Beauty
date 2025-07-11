@@ -25,49 +25,103 @@ app-carrousel {
 }
 
 /* BOTONES */
-.category-buttons {
+.botones-home {
   display: flex;
-  gap: 20px;
   justify-content: center;
-  flex-wrap: wrap;
-  margin: 30px auto;
+  gap: 1rem;
+  margin-top: 20px;
 }
 
-.category-btn {
-  position: relative;
-  width: 260px;
-  height: 100px;
+.botones-home button {
+  background-color: #a98a6a;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 24px;
   border: none;
-  margin-bottom: 20px;
-  border-radius: 16px;
-  overflow: hidden;
+  border-radius: 10px;
+  font-size: 1.1rem;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.botones-home button:hover {
+  background-color: #8c7154;
+}
+
+.boton-categoria {
+  min-width: 80%;
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  height: 140px;
+  font-size: 1.3rem;
+  font-weight: bold;
   background-size: cover;
   background-position: center;
-  color: white;
-  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background-blend-mode: multiply;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.boton-categoria:hover {
+  transform: translateY(-4px);
+  background-color: rgba(0, 0, 0, 0.2); /* más oscuro al pasar el mouse */
+}
+
+.fondo-perfumes {
+  background-image: url('/images/boton-perfumes.png');
+}
+
+.fondo-maquillaje {
+  background-image: url('/images/boton-maquillaje.png');
+}
+
+.fondo-universo {
+  background-image: url('/images/boton-universo.png');
+}
+
+/* TITULO RECOMENDADOS */
+.separador-recomendados {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+
+.titulo-recomendados {
+  font-size: 24px;
   font-weight: 600;
-  text-transform: uppercase;
-  transition: transform 0.3s ease;
-
-  span {
-    position: relative;
-    z-index: 2;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    /*background-color: rgba(0, 0, 0, 0.5);*/
-  }
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  color: #333;
+  margin: 0;
 }
 
-.perfumes {
-  background: #b08c6f;
+.ver-todo-link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #5a422e;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
+
+.ver-todo-link:hover {
+  color: #a98a6a;
+}
+
+/* Línea fina debajo */
+.linea-separadora {
+  border: none;
+  border-top: 1.5px solid #333;
+  margin: 0 30px 30px 30px;
+}
+
+
 

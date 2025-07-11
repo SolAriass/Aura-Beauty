@@ -22,10 +22,23 @@
   <app-carrousel class="carrousel"></app-carrousel>
 
   <div class="d-flex justify-content-center align-items-center">
-    <button class="btn fw-bold p-2 w-25" style="background-color: #836d59; font-family: Montserrat;" (click)="irAProductos()">
-      Ver todos los productos
-    </button>
+    <div class="botones-home">
+      <button class="boton-categoria fondo-perfumes" (click)="verCategoria(1)">Ver Perfumes</button>
+      <button class="boton-categoria fondo-maquillaje" (click)="verCategoria(2)">Ver Maquillaje</button>
+      <button class="boton-categoria fondo-universo" (click)="irAProductos()">Ver Todo</button>
+    </div>
   </div>
+
+  <!-- RECOMENDADOS -->
+   <div class="recomendados">
+      <div class="separador-recomendados">
+        <h2 class="titulo-recomendados">Recomendados para vos</h2>
+        <a class="ver-todo-link" (click)="verCategoria(1)">Ver todo</a>
+      </div>
+      <hr class="linea-separadora">
+
+      <app-recomendados></app-recomendados>
+   </div>
 
   <!-- CARRITO -->
   <app-carrito></app-carrito>

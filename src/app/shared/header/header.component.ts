@@ -13,10 +13,9 @@ import { BuscadorComponent } from "../buscador/buscador.component";
 export class HeaderComponent {
   carritoService: CarritoService;
 
-  constructor(private router: Router, private authService: AuthService,carritoService: CarritoService) {
+  constructor(private router: Router, private authService: AuthService, carritoService: CarritoService) {
     this.carritoService = carritoService;
   }
-
 
   irAPerfil() {
     this.router.navigate(['/perfil']);
